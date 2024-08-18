@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 import os
 
-HOME_PATH = Path("HOHOHO")
+HOME_PATH = Path.home()
 
 typebugs = """airflow-3831         
 airflow-4674         
@@ -176,7 +176,7 @@ def pyre_config_change(path, file_content, prj):
     return file_content
 
 def run():
-    config_path = Path('.') / "config"
+    config_path = HOME_PATH / "configuration" / "config"
 
     typebugs_list = typebugs.split()
     for prj in typebugs_list:
@@ -206,23 +206,17 @@ def run():
         save_path = save_path / prj
         save_path.mkdir(exist_ok=True)
 
-        print(new_mypy_content)
-        print(new_pytype_content)
-        print(new_pyright_content)
-        input()
 
-        # benchmark_path = HOME_PATH / "typebugs" / prj
+        benchmark_path = HOME_PATH / "typebugs" / prj
 
-        # with open(save_path / "mypy.ini", "w") as f:
-        #     f.write(new_mypy_content)
-        # with open(save_path / "pytype.cfg", "w") as f:
-        #     f.write(new_pytype_content)
-        # with open(save_path / "pyrightconfig.json", "w") as f:
-        #     json.dump(new_pyright_content, f, indent=4)
-        # with open(save_path / ".pyre_configuration", "w") as f:
-        #     json.dump(new_pyre_content, f, indent=4)
-
-    exit()
+        with open(save_path / "mypy.ini", "w") as f:
+            f.write(new_mypy_content)
+        with open(save_path / "pytype.cfg", "w") as f:
+            f.write(new_pytype_content)
+        with open(benchmark_path / "pyrightconfig.json", "w") as f:
+            json.dump(new_pyright_content, f, indent=4)
+        with open(save_path / ".pyre_configuration", "w") as f:
+            json.dump(new_pyre_content, f, indent=4)
 
     bugsinpy_list = bugsinpy.split()
     for prj in bugsinpy_list:
@@ -258,7 +252,7 @@ def run():
             f.write(new_mypy_content)
         with open(save_path / "pytype.cfg", "w") as f:
             f.write(new_pytype_content)
-        with open(save_path / "pyrightconfig.json", "w") as f:
+        with open(benchmark_path / "pyrightconfig.json", "w") as f:
             json.dump(new_pyright_content, f, indent=4)
         with open(save_path / ".pyre_configuration", "w") as f:
             json.dump(new_pyre_content, f, indent=4)
@@ -297,7 +291,7 @@ def run():
             f.write(new_mypy_content)
         with open(save_path / "pytype.cfg", "w") as f:
             f.write(new_pytype_content)
-        with open(save_path / "pyrightconfig.json", "w") as f:
+        with open(benchmark_path / "pyrightconfig.json", "w") as f:
             json.dump(new_pyright_content, f, indent=4)
         with open(save_path / ".pyre_configuration", "w") as f:
             json.dump(new_pyre_content, f, indent=4)

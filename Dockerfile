@@ -14,7 +14,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install GitPython
 RUN (cd Pyinder ; pip3 install -r requirements.txt)
 
-RUN pip3 install pyright mypy
+RUN pip3 install pyright==1.1.339 mypy==1.9.0
 
 # Set up environemnt
 RUN echo "alias pyinder='PYTHONPATH=${HOME}/Pyinder/..:\$PYTHONPATH python3 -m Pyinder.client.pyre'" >> /home/opam/.bashrc
