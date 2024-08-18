@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "typebugs/airflow-5686"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/airflow-5686",
+            "subdirectory": "airflow"
+        },
+        {
+            "root": "typebugs/airflow-5686",
+            "subdirectory": "tests"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

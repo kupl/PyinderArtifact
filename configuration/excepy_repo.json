@@ -1,0 +1,66 @@
+{
+    "matplotlib-3": {
+        "git_url": "https://github.com/matplotlib/matplotlib.git",
+        "commit_id": "7a6bab7ca74308de0afc9656573b9c7de851c236"
+    },
+    "matplotlib-7": {
+        "git_url": "https://github.com/matplotlib/matplotlib.git",
+        "commit_id": "5698325bee9071eaacee2603ad35c1d027a62387"
+    },
+    "matplotlib-8": {
+        "git_url": "https://github.com/matplotlib/matplotlib.git",
+        "commit_id": "74e768459a4819461b5a9e4ea67615753fed47fb"
+    },
+    "matplotlib-10": {
+        "git_url": "https://github.com/matplotlib/matplotlib.git",
+        "commit_id": "659aaaa43cce66b50a07693598b9b270a18d15c5"
+    },
+    "numpy-8": {
+        "git_url": "https://github.com/numpy/numpy.git",
+        "commit_id": "9c83b13ce1b08aed8181d284566d002086393a89"
+    },
+    "Pillow-14": {
+        "git_url": "https://github.com/python-pillow/Pillow.git",
+        "commit_id": "d173e8179824e7f24ad6aa482a7986a7f7f0272a"
+    },
+    "Pillow-15": {
+        "git_url": "https://github.com/python-pillow/Pillow.git",
+        "commit_id": "761081b1e32d995cdab6667c1dc1ba99b526948d"
+    },
+    "scipy-5": {
+        "git_url": "https://github.com/scipy/scipy.git",
+        "commit_id": "c38df7ba7f7158c6cb935153051ca1aaa8c69223"
+    },
+    "sympy-5": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "d1f59a1c9c94e591b72eedc9f0630ca56e6b26ad"
+    },
+    "sympy-6": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "9476425b9e34363c2d9ac38e9f04aa75ae54a775"
+    },
+    "sympy-36": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "48afbaf13f57df912502e5731b9b0afcc1e18f99"
+    },
+    "sympy-37": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "d1f59a1c9c94e591b72eedc9f0630ca56e6b26ad"
+    },
+    "sympy-40": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "22b0f593278c83e63823c840e16346e88dba6da1"
+    },
+    "sympy-42": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "0504abe26f694ba5d09660cd40b70d74f3eb6cf2"
+    },
+    "sympy-43": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "c678799dd62dc25f64fd2e7bab65c314dcddd288"
+    },
+    "sympy-44": {
+        "git_url": "https://github.com/sympy/sympy.git",
+        "commit_id": "b0fced47c1c4701afd7599af99aa2440a933f3a8"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "excepy/scipy-5"
+    ],
+    "source_directories": [
+        {
+            "root": "excepy/scipy-5",
+            "subdirectory": "scipy"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

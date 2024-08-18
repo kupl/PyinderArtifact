@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "typebugs/kivy-6954"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/kivy-6954",
+            "subdirectory": "kivy"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "excepy/matplotlib-3"
+    ],
+    "source_directories": [
+        {
+            "root": "excepy/matplotlib-3",
+            "subdirectory": "lib/matplotlib"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

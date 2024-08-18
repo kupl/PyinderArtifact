@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "typebugs/core-29829"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/core-29829",
+            "subdirectory": "homeassistant"
+        },
+        {
+            "root": "typebugs/core-29829",
+            "subdirectory": "tests"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

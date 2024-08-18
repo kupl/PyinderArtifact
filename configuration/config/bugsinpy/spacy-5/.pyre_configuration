@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "bugsinpy/spacy-5"
+    ],
+    "source_directories": [
+        {
+            "root": "bugsinpy/spacy-5",
+            "subdirectory": "spacy"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

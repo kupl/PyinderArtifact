@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "bugsinpy/keras-34"
+    ],
+    "source_directories": [
+        {
+            "root": "bugsinpy/keras-34",
+            "subdirectory": "keras"
+        },
+        {
+            "root": "bugsinpy/keras-34",
+            "subdirectory": "tests"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

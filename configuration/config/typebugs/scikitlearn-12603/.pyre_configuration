@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "typebugs/scikitlearn-12603"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/scikitlearn-12603",
+            "subdirectory": "sklearn"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

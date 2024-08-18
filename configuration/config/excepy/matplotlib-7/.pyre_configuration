@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "excepy/matplotlib-7"
+    ],
+    "source_directories": [
+        {
+            "root": "excepy/matplotlib-7",
+            "subdirectory": "lib"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

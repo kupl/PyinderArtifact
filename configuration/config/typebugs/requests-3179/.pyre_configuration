@@ -1,0 +1,19 @@
+{
+    "search_path": [
+        "typebugs/requests-3179"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/requests-3179",
+            "subdirectory": "requests"
+        },
+        {
+            "root": "typebugs/requests-3179",
+            "subdirectory": "tests"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-without-requests",
+    "typeshedPath": "Pyinder/stubs/typeshed/typeshed-without-requests"
+}

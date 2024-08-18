@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "typebugs/sanic-1334"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/sanic-1334",
+            "subdirectory": "sanic"
+        },
+        {
+            "root": "typebugs/sanic-1334",
+            "subdirectory": "tests"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

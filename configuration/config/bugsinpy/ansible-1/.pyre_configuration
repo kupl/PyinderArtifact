@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "bugsinpy/ansible-1"
+    ],
+    "source_directories": [
+        {
+            "root": "bugsinpy/ansible-1",
+            "subdirectory": "lib/ansible"
+        },
+        {
+            "root": "bugsinpy/ansible-1",
+            "subdirectory": "test"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

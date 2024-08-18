@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "excepy/Pillow-15"
+    ],
+    "source_directories": [
+        {
+            "root": "excepy/Pillow-15",
+            "subdirectory": "PIL"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-without-Pillow"
+}

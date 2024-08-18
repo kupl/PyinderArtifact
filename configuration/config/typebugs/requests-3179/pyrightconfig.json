@@ -1,0 +1,18 @@
+{
+    "include": [
+        "requests-3179/requests",
+        "requests-3179/tests"
+    ],
+    "typeshedPath": "Pyinder/stubs/typeshed/typeshed-without-requests",
+    "reportUndefinedVariable": "warning",
+    "strictListInference": true,
+    "strictDictInference": true,
+    "strictSetInference": true,
+    "reportMissingModuleSource": false,
+    "reportMissingImports": false,
+    "reportWildcardImportFromLibrary": false,
+    "reportPrivateImportUsage": false,
+    "reportTypedDictNotRequiredAccess": false,
+    "reportUnusedCoroutine": false,
+    "reportUnboundVariable": false
+}

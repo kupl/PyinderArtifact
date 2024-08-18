@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "excepy/sympy-40"
+    ],
+    "source_directories": [
+        {
+            "root": "excepy/sympy-40",
+            "subdirectory": "sympy"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

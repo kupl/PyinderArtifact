@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "bugsinpy/luigi-14"
+    ],
+    "source_directories": [
+        {
+            "root": "bugsinpy/luigi-14",
+            "subdirectory": "luigi"
+        },
+        {
+            "root": "bugsinpy/luigi-14",
+            "subdirectory": "test"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

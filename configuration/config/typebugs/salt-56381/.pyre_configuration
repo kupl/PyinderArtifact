@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "typebugs/salt-56381"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/salt-56381",
+            "subdirectory": "salt"
+        },
+        {
+            "root": "typebugs/salt-56381",
+            "subdirectory": "tests"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

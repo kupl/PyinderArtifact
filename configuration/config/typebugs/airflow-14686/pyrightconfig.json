@@ -1,0 +1,17 @@
+{
+    "include": [
+        "airflow-14686/airflow",
+        "airflow-14686/tests"
+    ],
+    "reportUndefinedVariable": "warning",
+    "strictListInference": true,
+    "strictDictInference": true,
+    "strictSetInference": true,
+    "reportMissingModuleSource": false,
+    "reportMissingImports": false,
+    "reportWildcardImportFromLibrary": false,
+    "reportPrivateImportUsage": false,
+    "reportTypedDictNotRequiredAccess": false,
+    "reportUnusedCoroutine": false,
+    "reportUnboundVariable": false
+}

@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "excepy/matplotlib-8"
+    ],
+    "source_directories": [
+        {
+            "root": "excepy/matplotlib-8",
+            "subdirectory": "lib"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

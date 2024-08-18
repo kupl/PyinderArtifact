@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "typebugs/beets-3360"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/beets-3360",
+            "subdirectory": "beetsplug"
+        },
+        {
+            "root": "typebugs/beets-3360",
+            "subdirectory": "test"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "bugsinpy/scrapy-2"
+    ],
+    "source_directories": [
+        {
+            "root": "bugsinpy/scrapy-2",
+            "subdirectory": "scrapy"
+        },
+        {
+            "root": "bugsinpy/scrapy-2",
+            "subdirectory": "tests"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

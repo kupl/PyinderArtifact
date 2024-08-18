@@ -1,0 +1,17 @@
+{
+    "include": [
+        "core-29829/homeassistant",
+        "core-29829/tests"
+    ],
+    "reportUndefinedVariable": "warning",
+    "strictListInference": true,
+    "strictDictInference": true,
+    "strictSetInference": true,
+    "reportMissingModuleSource": false,
+    "reportMissingImports": false,
+    "reportWildcardImportFromLibrary": false,
+    "reportPrivateImportUsage": false,
+    "reportTypedDictNotRequiredAccess": false,
+    "reportUnusedCoroutine": false,
+    "reportUnboundVariable": false
+}

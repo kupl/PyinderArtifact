@@ -1,0 +1,46 @@
+{
+    "ansible-1": {
+        "git_url": "https://github.com/ansible/ansible.git",
+        "commit_id": "25c5388fdec9e56517a93feb5e8d485680946c25"
+    },
+    "keras-34": {
+        "git_url": "https://github.com/keras-team/keras.git",
+        "commit_id": "7ef5244a2f1f7f7b76e3c804b82cbb20cdf4d139"
+    },
+    "keras-39": {
+        "git_url": "https://github.com/keras-team/keras.git",
+        "commit_id": "3a431ea52d090fb3ef8a1e0e5d7f796d9a42e097"
+    },
+    "luigi-4": {
+        "git_url": "https://github.com/spotify/luigi.git",
+        "commit_id": "ffa51b50103a3adaf3c4d0569fdb037a7ba01e8e"
+    },
+    "luigi-14": {
+        "git_url": "https://github.com/spotify/luigi.git",
+        "commit_id": "f7219c38121098d464011a094156d99b5b320362"
+    },
+    "pandas-49": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "113c2559ff10df03d9d8803ac84455904d408e9b"
+    },
+    "pandas-57": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "267d2d8635920581f362dbf5857f28cf4bea213c"
+    },
+    "pandas-158": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "a76df79498c452ace8ef21dfca8e5267169e92cb"
+    },
+    "scrapy-1": {
+        "git_url": "https://github.com/scrapy/scrapy.git",
+        "commit_id": "c57512fa669e6f6b1b766a7639206a380f0d10ce"
+    },
+    "scrapy-2": {
+        "git_url": "https://github.com/scrapy/scrapy.git",
+        "commit_id": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff"
+    },
+    "spacy-5": {
+        "git_url": "https://github.com/explosion/spaCy.git",
+        "commit_id": "bdfb696677a7591ced018e7597c00929e97c6837"
+    }
+}

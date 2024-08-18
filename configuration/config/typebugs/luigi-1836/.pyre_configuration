@@ -1,0 +1,18 @@
+{
+    "search_path": [
+        "typebugs/luigi-1836"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/luigi-1836",
+            "subdirectory": "luigi"
+        },
+        {
+            "root": "typebugs/luigi-1836",
+            "subdirectory": "test"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

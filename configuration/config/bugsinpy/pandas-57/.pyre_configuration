@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "bugsinpy/pandas-57"
+    ],
+    "source_directories": [
+        {
+            "root": "bugsinpy/pandas-57",
+            "subdirectory": "pandas"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}

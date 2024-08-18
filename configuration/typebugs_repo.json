@@ -1,0 +1,166 @@
+{
+    "airflow-3831": {
+        "git_url": "https://github.com/apache/airflow.git",
+        "commit_id": "f27915150f319f08e0c0450454f48640a064db20"
+    },
+    "airflow-4674": {
+        "git_url": "https://github.com/apache/airflow.git",
+        "commit_id": "59d2615459bf3bef0c11431f4722ea83ee20eae8"
+    },
+    "airflow-5686": {
+        "git_url": "https://github.com/apache/airflow.git",
+        "commit_id": "da938a1ee0f4ff874c5fef7969aa04a0d700e02b"
+    },
+    "airflow-6036": {
+        "git_url": "https://github.com/apache/airflow.git",
+        "commit_id": "7be55609fa50319b7806c9b03167ca10e97257d8"
+    },
+    "airflow-8151": {
+        "git_url": "https://github.com/apache/airflow.git",
+        "commit_id": "f3c49241c1ace6e59b64be6f338fc5cc6a19c516"
+    },
+    "airflow-14686": {
+        "git_url": "https://github.com/apache/airflow.git",
+        "commit_id": "ad27e4d196e989c93193fed80667634b50bd6891"
+    },
+    "beets-3360": {
+        "git_url": "https://github.com/beetbox/beets.git",
+        "commit_id": "05516f9503bdb6c23015d844269ea809114f8db2"
+    },
+    "core-8065": {
+        "git_url": "https://github.com/home-assistant/core.git",
+        "commit_id": "2ba6b3a2ab27d4d753e9d9c6d9a6b53a9c7b6cb6"
+    },
+    "core-21734": {
+        "git_url": "https://github.com/home-assistant/core.git",
+        "commit_id": "be989ebb7e74cbe889e109bf3300e75fd9df87d9"
+    },
+    "core-29829": {
+        "git_url": "https://github.com/home-assistant/core.git",
+        "commit_id": "66d2f5f61de6a9c2cfed63efe686b3eaeef74fe9"
+    },
+    "core-32222": {
+        "git_url": "https://github.com/home-assistant/core.git",
+        "commit_id": "e695bb55c8101b1addad9f4a774b5ab7d4e8dfbd"
+    },
+    "core-32318": {
+        "git_url": "https://github.com/home-assistant/core.git",
+        "commit_id": "19faf06ce724e243d8e37c451af03d04128547a3"
+    },
+    "core-40034": {
+        "git_url": "https://github.com/home-assistant/core.git",
+        "commit_id": "1f8c1f151d47723a39c27dbf42fbfea69f855623"
+    },
+    "kivy-6954": {
+        "git_url": "https://github.com/kivy/kivy.git",
+        "commit_id": "e4de92ca12594d8060ccf25766a4256cec3e25fa"
+    },
+    "luigi-1836": {
+        "git_url": "https://github.com/spotify/luigi.git",
+        "commit_id": "add86fa7d8841931df8ab5e6093bc83d717cae80"
+    },
+    "pandas-17609": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "d1fe892a754bf48839d9ac4029e258883ee64a2e"
+    },
+    "pandas-21540": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "66fea91e915ca5e3f096055f3ad0f07335483e3f"
+    },
+    "pandas-22378": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "9f6c02dd40e3ccd4dc13dcc2ab449b7aed2dc4ae"
+    },
+    "pandas-22804": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "01afc42ce5231b65101fa4d0cb00e4be10d446a0"
+    },
+    "pandas-24572": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "1fc76b80abdd3e346e6ee055ea38585c959851fa"
+    },
+    "pandas-28412": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "eb8cce0bf999bd84460d336de0886e4d7c3c0b6c"
+    },
+    "pandas-36950": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "a313f7ff5c003bc14fa36714d41c9842209b4e6a"
+    },
+    "pandas-37547": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "5fd478d1dbb07fe9c9bd2d63f49d27df78b5e46d"
+    },
+    "pandas-38431": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "6eeab017e3effc9fa2248fcc8c24db440a22c9ee"
+    },
+    "pandas-39028-1": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "20e414a460b132fc90d5d9bb1290ef232758d5d1"
+    },
+    "pandas-41915": {
+        "git_url": "https://github.com/pandas-dev/pandas.git",
+        "commit_id": "e3ba16745816e55f7afa7f114bea41a2abeba866"
+    },
+    "requests-3179": {
+        "git_url": "https://github.com/psf/requests.git",
+        "commit_id": "3669b4216a71356cde6e7f88a8878cac761d999b"
+    },
+    "requests-3390": {
+        "git_url": "https://github.com/psf/requests.git",
+        "commit_id": "5d9b9ffab4650d84a6b3fdb94776d533255f64c5"
+    },
+    "requests-4723": {
+        "git_url": "https://github.com/psf/requests.git",
+        "commit_id": "dffd5d435e2d51958af1ccc9fd5e0f8f9df2fdfe"
+    },
+    "salt-33908": {
+        "git_url": "https://github.com/saltstack/salt.git",
+        "commit_id": "16b5e9dcc110c88794e54a6ffe79953813687d14"
+    },
+    "salt-38947": {
+        "git_url": "https://github.com/saltstack/salt.git",
+        "commit_id": "c45b99661b38f2f5ce34e5682e22459eac1bda1d"
+    },
+    "salt-52624": {
+        "git_url": "https://github.com/saltstack/salt.git",
+        "commit_id": "806307aecfd9299237902996bd999c15207984d2"
+    },
+    "salt-53394": {
+        "git_url": "https://github.com/saltstack/salt.git",
+        "commit_id": "07a311289824485efbe320bcae74ffa15a83c4ba"
+    },
+    "salt-54240": {
+        "git_url": "https://github.com/saltstack/salt.git",
+        "commit_id": "8404ec20f031b404f56fed382c8c95b57a2c07b1"
+    },
+    "salt-54785": {
+        "git_url": "https://github.com/saltstack/salt.git",
+        "commit_id": "b9459e6a969b425b59b311ea65fd6c86edd77c6b"
+    },
+    "salt-56381": {
+        "git_url": "https://github.com/saltstack/salt.git",
+        "commit_id": "5dbc01025a1350a68463945a17dadb897ecf2923"
+    },
+    "sanic-1334": {
+        "git_url": "https://github.com/sanic-org/sanic.git",
+        "commit_id": "7dc62be5cfc71559b61532ba7d4cd8267a923ce1"
+    },
+    "scikitlearn-7259": {
+        "git_url": "https://github.com/scikit-learn/scikit-learn.git",
+        "commit_id": "0f2a00f8903cc776a4193ed5a62f0d749c46a474"
+    },
+    "scikitlearn-8973": {
+        "git_url": "https://github.com/scikit-learn/scikit-learn.git",
+        "commit_id": "a47c3b9a0764183f8803794de117742125fb79d2"
+    },
+    "scikitlearn-12603": {
+        "git_url": "https://github.com/scikit-learn/scikit-learn.git",
+        "commit_id": "ea169b596ca5913ccd02cacfc09a6ec0d3492702"
+    },
+    "Zappa-388": {
+        "git_url": "https://github.com/Miserlou/Zappa.git",
+        "commit_id": "1fe84d2e320f4dac8d0514bedfb01ac732091ddb"
+    }
+}

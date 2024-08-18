@@ -1,0 +1,14 @@
+{
+    "search_path": [
+        "typebugs/pandas-22804"
+    ],
+    "source_directories": [
+        {
+            "root": "typebugs/pandas-22804",
+            "subdirectory": "pandas"
+        }
+    ],
+    "strict": true,
+    "taint_models_path": ".",
+    "typeshed": "Pyinder/stubs/typeshed/typeshed-master"
+}
