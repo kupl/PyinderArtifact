@@ -86,7 +86,7 @@ excepy_projects = [
 ]
 
 CONFIG_PATH = Path.home() / "configuration" / "config"
-RESULT_PATH = Path.home() / "result" / "pyinder"
+RESULT_PATH = Path.home() / "result" / "pytype"
 # make directory for result
 if not os.path.exists(RESULT_PATH):
     RESULT_PATH.mkdir(parents=True)
@@ -110,7 +110,7 @@ def run(skip, project, num) :
 
         print(target_project + ' is analyzed... ', end='', flush=True)
 
-        config_path = CONFIG_PATH / "typebugs" / target_project
+        config_path = CONFIG_PATH / 'typebugs' / target_project / 'pytype.cfg'
         result_path = RESULT_PATH / target_project
         result_file = result_path / 'result.json'
         check_directory_and_make_directory(result_path)
@@ -119,17 +119,13 @@ def run(skip, project, num) :
             print('Skip!')
             continue
 
-        command = './run.sh {}'.format(str(config_path))
+        #command = 'PYTHONPATH="/home/wonseok/Pyinder/..:$PYTHONPATH" python -m Pyinder.client.pyre -n --output=json mine'
+        command = './run_pytype.sh {}'.format(config_path)
 
         with open(os.devnull) as DEVNULL:
             result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.getcwd())
             timeStarted = time.time()  
             out, err = result.communicate()
-
-            # print(out)
-            # print(err)
-
-            
             timeDelta = time.time() - timeStarted  
 
             print("Finished process in "+str(timeDelta)+" seconds.")
@@ -139,8 +135,8 @@ def run(skip, project, num) :
         with open(result_file, 'w+') as f :
             json.dump(out.decode('utf-8'), f)
 
-    with open(RESULT_PATH / 'typebugs_time.json', 'w+') as f :
-        json.dump(total_time, f, indent=4)
+    with (RESULT_PATH / 'typebugs_time.json').open('w') as f :
+        json.dump(total_time, f)
         
 def bugsinpy_run(skip, project, num) :
     total_time = dict()
@@ -155,7 +151,7 @@ def bugsinpy_run(skip, project, num) :
 
         print(target_project + ' is analyzed... ', end='', flush=True)
 
-        config_path = CONFIG_PATH / "bugsinpy" / target_project
+        config_path = CONFIG_PATH / 'bugsinpy' / target_project / 'pytype.cfg'
         result_path = RESULT_PATH / target_project
         result_file = result_path / 'result.json'
         check_directory_and_make_directory(result_path)
@@ -164,14 +160,13 @@ def bugsinpy_run(skip, project, num) :
             print('Skip!')
             continue
 
-        command = './run.sh {}'.format(str(config_path))
-
+        #command = 'PYTHONPATH="/home/wonseok/Pyinder/..:$PYTHONPATH" python -m Pyinder.client.pyre -n --output=json mine'
+        command = './run_pytype.sh {}'.format(config_path)
 
         with open(os.devnull) as DEVNULL:
             result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.getcwd())
             timeStarted = time.time()  
             out, err = result.communicate()
-            
             timeDelta = time.time() - timeStarted  
 
             print("Finished process in "+str(timeDelta)+" seconds.")
@@ -180,8 +175,8 @@ def bugsinpy_run(skip, project, num) :
         with open(result_file, 'w+') as f :
             json.dump(out.decode('utf-8'), f)
 
-    with open(RESULT_PATH / 'bugsinpy_time.json', 'w+') as f :
-        json.dump(total_time, f, indent=4)
+    with (RESULT_PATH / 'bugsinpy_time.json').open('w') as f :
+        json.dump(total_time, f)
 
 def excepy_run(skip, project, num) :
     total_time = dict()
@@ -196,7 +191,7 @@ def excepy_run(skip, project, num) :
 
         print(target_project + ' is analyzed... ', end='', flush=True)
 
-        config_path = CONFIG_PATH / "excepy" / target_project
+        config_path = CONFIG_PATH / 'typebugs' / target_project / 'pytype.cfg'
         result_path = RESULT_PATH / target_project
         result_file = result_path / 'result.json'
         check_directory_and_make_directory(result_path)
@@ -205,7 +200,8 @@ def excepy_run(skip, project, num) :
             print('Skip!')
             continue
 
-        command = './run.sh {}'.format(str(config_path))
+        #command = 'PYTHONPATH="/home/wonseok/Pyinder/..:$PYTHONPATH" python -m Pyinder.client.pyre -n --output=json mine'
+        command = './run_pytype.sh {}'.format(config_path)
 
         with open(os.devnull) as DEVNULL:
             result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.getcwd())
@@ -216,14 +212,13 @@ def excepy_run(skip, project, num) :
             print("Finished process in "+str(timeDelta)+" seconds.")
             total_time[target_project] = timeDelta
 
-
         with open(result_file, 'w+') as f :
             json.dump(out.decode('utf-8'), f)
-    
-    with open(RESULT_PATH / 'excepy_time.json', 'w+') as f :
-        json.dump(total_time, f, indent=4)
 
-def main() :
+    with (RESULT_PATH / 'excepy_time.json').open('w') as f :
+        json.dump(total_time, f)
+
+def main(argv) :
     parser = argparse.ArgumentParser()
     #parser.add_argument("-s", "--src_dir", dest="src_dir", action="store", required=True, type=Path) 
     parser.add_argument("-p", "--project", action="store", default=None, type=str) 
@@ -237,4 +232,4 @@ def main() :
     excepy_run(args.skip, args.project, args.num)
 
 if __name__ == "__main__" :
-    main()
+    main(sys.argv[1:])

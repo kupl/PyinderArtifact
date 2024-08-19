@@ -11,51 +11,8 @@ from pprint import pprint
 
 import pickle
 
-'''
-target_projects = [
-    "airflow-3831",
-    "airflow-4674",
-    "airflow-5686",
-    "airflow-6036",
-    "airflow-14686",
-    "beets-3360",
-    "core-8065",
-    "core-29829",
-    "core-32222",
-    "core-32318",
-    "core-38605",
-    "pandas-17609",
-    "pandas-20938",
-    "pandas-21540",
-    "pandas-22378",
-    "pandas-22804",
-    "pandas-24572",
-    "pandas-28412",
-    "pandas-30532",
-    "pandas-36950",
-    "pandas-37547",
-    "pandas-38431",
-    "pandas-39028-1",
-    "pandas-39028-2",
-    "pandas-41915",
-    "rasa-8704",
-    "requests-3179",
-    "requests-3368",
-    "salt-33908",
-    "salt-50958",
-    "salt-52624",
-    "salt-53394",
-    "salt-54240",
-    "salt-54785",
-    "salt-56094",
-    "salt-56381",
-    "sanic-1334",
-    "scikitlearn-7259",
-    "scikitlearn-8973",
-    "scikitlearn-12603",
-    "Zappa-388",
-]
-'''
+HOME_PATH = Path.home()
+RESULT_PATH = HOME_PATH / 'result'
 
 op_list = []
 
@@ -65,8 +22,6 @@ import inspect
 for op in (inspect.getmembers(operator)) :
     if "__" in op[0] :
         op_list.append(op[0])
-
-print(op_list)
 
 op_list.append("__iter__")
 op_list.append("__next__")
@@ -162,9 +117,11 @@ pyright_op_msg.add("in function \"map\"")
 pyright_op_msg.add("in function \"filter\"")
 pyright_op_msg.add("Function accepts too many positional parameters")
 pyright_op_msg.add("Arguments missing for parameters")
+pyright_op_msg.add("Argument missing for parameter")
 pyright_op_msg.add("No parameter named")
 pyright_op_msg.add("Cannot access member \"decode\" for type \"str\"")
 pyright_op_msg.add("Cannot access member \"encode\" for type \"bytes\"")
+pyright_op_msg.add("No overloads for")
 
 mypy_op_msg.add("not callable")
 mypy_op_msg.add("Unsupported operand types")
@@ -181,6 +138,7 @@ mypy_op_msg.add("Unsupported right operand type")
 mypy_op_msg.add("Unsupported left operand type")
 mypy_op_msg.add("No overload variant")
 mypy_op_msg.add("incompatible with supertype")
+mypy_op_msg.add("gets multiple values for keyword argument")
 
 pytype_op_msg.add("Built-in function")
 pytype_op.add("unsupported-operands")
@@ -191,91 +149,6 @@ pytype_op.add("wrong-arg-types")
 pytype_op.add("not-callable")
 pytype_op.add("bad-return-type")
 
-target_projects = [
-    "airflow-3831",
-    "airflow-4674",
-    "airflow-5686",
-    "airflow-6036",
-    "airflow-8151",
-    "airflow-14513",
-    "airflow-14686",
-    "beets-3360",
-    "core-8065",
-    "core-21734",
-    "core-29829",
-    "core-32222",
-    "core-32318",
-    "core-40034",
-    "kivy-6954",
-    "luigi-1836",
-    "pandas-17609",
-    "pandas-21540",
-    "pandas-22378",
-    "pandas-22804",
-    "pandas-24572",
-    "pandas-28412",
-    "pandas-30532",
-    "pandas-36950",
-    "pandas-37547",
-    "pandas-38431",
-    "pandas-39028-1",
-    "pandas-41915",
-    "rasa-8704",
-    "requests-3179",
-    "requests-3390",
-    "requests-4723",
-    "salt-33908",
-    "salt-38947",
-    "salt-52624",
-    "salt-53394",
-    "salt-54240",
-    "salt-54785",
-    "salt-56381",
-    "sanic-1334",
-    "sanic-2008",
-    "scikitlearn-7259",
-    "scikitlearn-8973",
-    "scikitlearn-12603",
-    "Zappa-388",
-    "ansible-1",
-    "keras-34",
-    "keras-39",
-    "luigi-4",
-    "luigi-14",
-    "pandas-49",
-    "pandas-57",
-    "pandas-158",
-    "scrapy-2",
-    "scrapy-20",
-    "scrapy-30",
-    "spacy-5",
-    "tqdm-3",
-    "youtubedl-16",
-    "cpython-6",
-    "matplotlib-3",
-    "matplotlib-7",
-    "matplotlib-8",
-    "matplotlib-10",
-    "numpy-8",
-    "Pillow-14",
-    "Pillow-15",
-    "Pillow-16",
-    "Pillow-17",
-    "requests-1",
-    "scipy-5",
-    "sympy-5",
-    "sympy-6",
-    "sympy-36",
-    "sympy-37",
-    "sympy-40",
-    "sympy-42",
-    "sympy-43",
-    "sympy-44",
-    "sympy-45",
-    "sympy-48",
-    "sympy-49",
-    "sympy-60",
-]
 
 # new
 target_projects = [
@@ -284,7 +157,6 @@ target_projects = [
     "airflow-5686",
     "airflow-6036",
     "airflow-8151",
-    # "airflow-14513",
     "airflow-14686",
     "beets-3360",
     "core-8065",
@@ -301,13 +173,11 @@ target_projects = [
     "pandas-22804",
     "pandas-24572",
     "pandas-28412",
-    # "pandas-30532",
     "pandas-36950",
     "pandas-37547",
     "pandas-38431",
     "pandas-39028-1",
     "pandas-41915",
-    # "rasa-8704",
     "requests-3179",
     "requests-3390",
     "requests-4723",
@@ -319,7 +189,6 @@ target_projects = [
     "salt-54785",
     "salt-56381",
     "sanic-1334",
-    # "sanic-2008",
     "scikitlearn-7259",
     "scikitlearn-8973",
     "scikitlearn-12603",
@@ -335,9 +204,6 @@ target_projects = [
     "scrapy-1",
     "scrapy-2",
     "spacy-5",
-    # "tqdm-3",
-    #"youtubedl-11",
-    #"youtubedl-16",
     "matplotlib-3",
     "matplotlib-7",
     "matplotlib-8",
@@ -377,16 +243,7 @@ def change_type(typ, default) :
 
         return default
 
-run_path = Path('/home/wonseok/pyinder_run')
-pyre_path = run_path / 'pyre' # 'pyre_0516' 
-pyre_not_known_path = run_path / 'pyre_231211_no_filter'
-pyre_without_dummy_path = run_path / 'important_stats/pyre_0523_no_dict' # 'important_stats/pyre_no_filter_0515'
-pyre_without_score = run_path / 'important_stats/pyre_value_0523' # 'pyre_no_repeat'
-real_pyre_path = run_path / 'real_pyre_result_0419'
-pyright_path = run_path / 'pyright'
-mypy_path = run_path / 'mypy'
-pytype_path = run_path / 'pytype'
-pyright_annotated_path = run_path / 'pyright_annotated'
+
 
 def filter_file(path) :
     if '/tests/' in path :
@@ -753,8 +610,7 @@ def get_error_types_pyright(errors) :
 
     def check_none(e) :
         if "reportOptional" in return_name(e) and \
-            "reportOptionalMemberAccess" not in return_name(e) and \
-            "reportOptionalIterable" not in return_name(e):
+            "reportOptionalMemberAccess" not in return_name(e) :
             return True
 
         return False
@@ -989,12 +845,7 @@ def compare_pyre(prev, next) :
     return remain
 
 def run(project, num, detail) :
-
-    #print('{:<20}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}{:<10}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}{:<10}'.format("Benchmark", "Pyinder", "Operator", "None", "Parameter", "Await", "Attrs", "Other", "Pyright", "Operator", "None", "Parameter", "Await", "Attrs", "Other"))
-
-    print(len(target_projects))
-
-    print('{:<20}{:<10}{:<15}{:<15}{:<10}{:<15}{:<15}{:<10}{:<15}{:<15}'.format("Benchmark", "Pyinder", "Operator", "None", "W/O Dummy", "Operator", "None", "Pyright", "Operator", "None"))
+    # print('{:<20}{:<10}{:<15}{:<15}{:<10}{:<15}{:<15}{:<10}{:<15}{:<15}'.format("Benchmark", "Pyinder", "Operator", "None", "W/O Dummy", "Operator", "None", "Pyright", "Operator", "None"))
 
     total_pyinder_alarm = 0
     total_pyright_alarm = 0
@@ -1031,50 +882,27 @@ def run(project, num, detail) :
 
         
 
-        pyre_json = pyre_path / target_project / 'result_.json'
-        pyre_not_known_json = pyre_not_known_path / target_project / 'result_.json' 
-        pyre_without_dummy_json = pyre_without_dummy_path / target_project / 'result_.json'
-        pyre_without_score_json = pyre_without_score / target_project / 'result_.json'
-        real_pyre_json = real_pyre_path / target_project / 'result_.json'
-        pyright_json = pyright_path / target_project / 'result.json'
-
-        mypy_json = mypy_path / target_project / 'result_.json'
-        pytype_json = pytype_path / target_project / 'result_.json'
+        pyinder_json = RESULT_PATH / "pyinder" / target_project / 'result_.json'
+        pyre_json = RESULT_PATH / "pyre" / target_project / 'result_.json'
+        pyright_json = RESULT_PATH / "pyright" / target_project / 'result.json'
+        mypy_json = RESULT_PATH / "mypy" / target_project / 'result_.json'
+        pytype_json = RESULT_PATH / "pytype" / target_project / 'result.json_'
         #pyright_annotated_path_json = pyright_annotated_path / target_project / 'result.json'
 
         try :
-            with open(pyre_json, 'r') as f :
-                pyre_result = pyre_analysis(json.load(f))
-
-            try:
-                with open(pyre_not_known_json, 'r') as f :
-                    pyre_not_known_result = pyre_analysis(json.load(f))
-            except :
-                pyre_not_known_result = {}
+            with open(pyinder_json, 'r') as f :
+                pyinder_result = pyre_analysis(json.load(f))
 
             try :
-                with open(pyre_without_dummy_json, 'r') as f :
-                    pyre_without_dummy_result = pyre_analysis(json.load(f))
+                with open(pyre_json, 'r') as f :
+                    pyre_result = pyre_analysis(json.load(f))
             except :
-                pyre_without_dummy_result = {}
-            
-            try:
-                with open(pyre_without_score_json, 'r') as f :
-                    pyre_without_score_result = pyre_analysis(json.load(f))
-            except :
-                pyre_without_score_result = {}
-
-            try :
-                with open(real_pyre_json, 'r') as f :
-                    real_pyre_result = pyre_analysis(json.load(f))
-            except :
-                real_pyre_result = {}
+                pyre_result = {}
 
             try :
                 with open(pyright_json, 'r') as f :
                     pyright_result = pyright_analysis(json.load(f))
             except Exception as e:
-                print(e)
                 pyright_result = {}
 
             try :
@@ -1098,13 +926,7 @@ def run(project, num, detail) :
             except :
                 pytype_result = []
 
-            #with open(pyright_annotated_path_json, 'r') as f : 
-            #    pyright_annotated_result = pyright_analysis(json.load(f))
-
-            with open(Path('/home/wonseok/pyinder_test/cloc') / (target_project + '.json')) as f :
-                cloc_result = json.load(f)["SUM"]["code"]
         except Exception as e:
-            print(e)
             continue
 
         project_set.add(target_project.split('-')[0])
@@ -1113,49 +935,13 @@ def run(project, num, detail) :
         total_pyright = 0
         total_specific = 0
         total_inter = 0
-
-        compare_dict = compare(pyre_result, pyright_result)
-
-        pyinder_list = []
-        pyright_list = []
-        inter_list = []
-
-        for k, v in compare_dict.items() :
-            left = v['left']
-            right = v['right']
-            inter = v['inter']
-
-            pyinder_list.extend(left+inter)
-            pyright_list.extend(right+inter)
-            inter_list.extend(inter)
-
-            total_pyinder += len(left) + len(inter)
-            total_pyright += len(right) + len(inter)
-            total_inter += len(inter)
-
-        print('{:<20}'.format(target_project), end='', flush=True)
         
-        pyinder_list = to_list(pyre_result)
-        pyinder_not_known_list = to_list(pyre_not_known_result)
-        pyinder_without_dummy_list = to_list(pyre_without_dummy_result)
-        pyinder_without_score_list = to_list(pyre_without_score_result)
-        real_pyre_list = to_list(real_pyre_result)
+        pyinder_list = to_list(pyinder_result)
+        pyre_list = to_list(pyre_result)
         pyright_list = to_list(pyright_result)
         mypy_list = mypy_result
         pytype_list = pytype_result
 
-        
-
-        #pyright_annotated_list = to_list(pyright_annotated_result)
-
-        print_only_pyinder(pyinder_list)
-        print_only_pyinder(pyinder_without_dummy_list)
-
-        print_only_pyright(pyright_list)
-        #print_only_pyright(pyright_annotated_list)
-        
-        #print_pyinder(pyinder_list)
-        #print_pyright(pyright_list)
 
         
 
@@ -1165,88 +951,12 @@ def run(project, num, detail) :
         total_pyinder = 0
         total_pyright = 0
 
-        if detail :
-            pyinder_true_type_error, pyinder_none_error, pyinder_incompatible, pyinder_awaitable, pyinder_attributes = get_error_types_pyinder(pyinder_list)
-
-            without_dummy_true_type_error, without_dummy_none_error, without_dummy_incompatibale, without_dummy_awaitable, without_dummy_attributes = get_error_types_pyinder(pyinder_without_dummy_list)
-
-            pyright_true_type_error, none_error, pyright_incompatible, pyright_awaitable, pyright_attributes = get_error_types_pyright(pyright_list)
-
-            print("{:<5} vs {:<5} ( {:<2.0%} )".format(len(pyinder_true_type_error), len(pyright_true_type_error), round((len(pyinder_true_type_error) / len(pyright_true_type_error)) - 1, 2)), end="", flush=True)
-            
-            print()
-
-            '''
-            new_pyright_true_type_error = []
-            for v in pyright_true_type_error :
-                if 'other_description' in v :
-                    continue
-                
-                new_pyright_true_type_error.append(v)
-            '''
-            """ file_dict = dict()
-            for v in pyinder_true_type_error :
-                flag = True
-                for w in without_dummy_true_type_error :
-                    if is_equal_error_on_pyre(v, w) :
-                        flag = False
-                        break
-
-                if flag:
-                    pprint(v)
-                    file_dict[v['file']] = file_dict.get(v['file'], 0) + 1
-
-            pprint(file_dict, sort_dicts=False)
-
-            exit() """
-
-            pprint(pyinder_true_type_error + pyinder_none_error + pyinder_incompatible)
-
-            file_dict = dict()
-            for v in pyinder_true_type_error + pyinder_none_error + pyinder_incompatible :
-                file_dict[v['file']] = file_dict.get(v['file'], 0) + 1
-
-            file_dict = dict(sorted(file_dict.items() , key=lambda x : x[1]))
-            pprint(file_dict, sort_dicts=False)
-            print(sum(file_dict.values()))
-
-            print("HMM")
-            print(len(pyinder_incompatible), len(pyinder_awaitable), len(pyinder_attributes))
-            print(len(without_dummy_incompatibale), len(without_dummy_awaitable), len(without_dummy_attributes))
-
-            exit()
-
-
-            '''
-            print()
-            pyinder_true_type_error, none_error, pyinder_incompatible, pyinder_awaitable, pyinder_attributes = get_error_types_pyinder(inter_list)
-
-            pyright_true_type_error, none_error, pyright_incompatible, pyright_awaitable, pyright_attributes = get_error_types_pyright(inter_list)
-            print(len(pyinder_true_type_error), len(pyinder_incompatible), len(pyinder_awaitable), len(pyinder_attributes))
-            print(len(pyright_true_type_error), len(pyright_incompatible), len(pyright_awaitable), len(pyright_attributes))
-
-            #pprint(pyright_true_type_error)
-            for e in pyright_true_type_error :
-                if e not in pyinder_true_type_error :
-                    pprint(e)
-            #for e in pyinder_true_type_error :
-            #    if e not in pyright_true_type_error :
-            #        pprint(e)
-            '''
         pyinder_true_type_error, pyinder_none_error, pyinder_incompatible, pyinder_awaitable, pyinder_attributes = get_error_types_pyinder(pyinder_list)
-        # not_known_true_type_error, not_known_none_error,_,_, _ = get_error_types_pyinder(pyinder_not_known_list)
-        without_dummy_true_type_error, without_dummy_none_error, without_dummy_incompatible, _, without_dummy_attributes = get_error_types_pyinder(pyinder_without_dummy_list)
-        without_score_true_type_error, without_score_none_error, without_score_incompatible, _, _ = get_error_types_pyinder(pyinder_without_score_list)
-
-        real_pyre_true_type_error, real_pyre_none_error, real_pyre_incompatible, _, _ = get_error_types_pyinder(real_pyre_list)
-
+        pyre_true_type_error, pyre_none_error, pyre_incompatible, _, _ = get_error_types_pyinder(pyre_list)
         pyright_true_type_error, pyright_none_error, pyright_incompatible, pyright_awaitable, pyright_attributes = get_error_types_pyright(pyright_list)
 
         if mypy_list :
-            if len(mypy_list) == 1 and mypy_list[0]["error"].strip() == "invalid syntax" :
-                mypy_list = None
-            else :
-                mypy_true_type_error = get_error_types_mypy(mypy_list)
+            mypy_true_type_error = get_error_types_mypy(mypy_list)
         else :
             mypy_true_type_error = mypy_list
         
@@ -1255,251 +965,30 @@ def run(project, num, detail) :
 
         pyinder_errors = pyinder_true_type_error + pyinder_none_error + pyinder_incompatible
         pyright_errors = pyright_true_type_error + pyright_none_error + pyright_incompatible
-        real_pyre_errors = real_pyre_true_type_error + real_pyre_none_error + real_pyre_incompatible
-        without_dummy_errors = without_dummy_true_type_error + without_dummy_none_error + without_dummy_incompatible
-        without_score_errors = without_score_true_type_error + without_score_none_error + without_score_incompatible
-
-        diff = compare_pyre(pyinder_errors, without_dummy_errors)
-        # dict_diff = compare_pyre(without_score_errors, pyinder_errors)
-        # diff = compare_pyre(diff, dict_diff)
-        
-        """ diff = compare_pyre(pyinder_errors, real_pyre_errors)
-        print(diff, " ", end="") """
-
-        pyinder_line = dict()
-        pyright_line = dict()
-
-        for v in pyinder_errors :
-            pyinder_line[v['line']] = True
-
-        for v in pyright_errors :
-            pyright_line[v['line']] = True
-
-        common_errors = 0
-
-        for k, v in pyinder_line.items() :
-            if (k-1) in pyright_line :
-                common_errors += 1
+        pyre_errors = pyre_true_type_error + pyre_none_error + pyre_incompatible
 
         # print(len(pyinder_line), len(pyright_line), common_errors)
 
-        project_name = target_project.split('-')[0]
-
-        kloc[project_name] = (kloc.get(project_name, 0) + cloc_result / 1000) 
-
-        error_dict = project_alarm.get(project_name, dict())
-        error_dict['type_error'] = error_dict.get('type_error', 0) + len(pyinder_true_type_error) + len(pyinder_incompatible)
-        error_dict['none_error'] = error_dict.get('none_error', 0) + len(pyinder_none_error)
-        project_alarm[project_name] = error_dict 
-
-        error_dict = baseline_alarm.get(project_name, dict())
-        error_dict['type_error'] = error_dict.get('type_error', 0) + len(without_dummy_true_type_error) + len(without_dummy_incompatible)
-        error_dict['none_error'] = error_dict.get('none_error', 0) + len(without_dummy_none_error)
-        baseline_alarm[project_name] = error_dict 
-        
-
-        error_dict = noscore_alarm.get(project_name, dict())
-        error_dict['type_error'] = error_dict.get('type_error', 0) + len(without_score_true_type_error) + len(without_score_incompatible)
-        error_dict['none_error'] = error_dict.get('none_error', 0) + len(without_score_none_error)
-        noscore_alarm[project_name] = error_dict 
-
-        error_dict = real_pyre_alarm.get(project_name, dict())
-        error_dict['type_error'] = error_dict.get('type_error', 0) + len(real_pyre_true_type_error) + len(real_pyre_incompatible)
-        error_dict['none_error'] = error_dict.get('none_error', 0) + len(real_pyre_none_error)
-        real_pyre_alarm[project_name] = error_dict
-
-        error_dict = pyright_alarm.get(project_name, dict())
-        error_dict['type_error'] = error_dict.get('type_error', 0) + len(pyright_true_type_error) + len(pyright_incompatible)
-        error_dict['none_error'] = error_dict.get('none_error', 0) + len(pyright_none_error)
-
-        for p in pyright_true_type_error + pyright_none_error + pyright_incompatible :
-            p['project'] = target_project
-            all_pyright.append(p)
-
-        for p in pyinder_true_type_error + pyinder_none_error + pyinder_incompatible :
-            p['project'] = target_project
-            all_pyinder.append(p)
-
-        for d in diff:
-            d['project'] = target_project
-            filter_pyinder.append(d)
-        
-
-        pyright_alarm[project_name] = error_dict 
-
-        error_dict = mypy_alarm.get(project_name, dict())
-        if mypy_list is not None :
-            error_dict['type_error'] = error_dict.get('type_error', 0) + len(mypy_true_type_error)
-            error_dict['none_error'] = error_dict.get('none_error', 0)
-            error_dict['num'] = error_dict.get('num', 0) + 1
-        mypy_alarm[project_name] = error_dict 
-
-        error_dict = pytype_alarm.get(project_name, dict())
-        error_dict['type_error'] = error_dict.get('type_error', 0) + len(pytype_true_type_error)
-        error_dict['none_error'] = error_dict.get('none_error', 0)
-        error_dict['num'] = error_dict.get('num', 0) + 1
-        pytype_alarm[project_name] = error_dict
-
-        project_num[project_name] = project_num.get(project_name, 0) + 1
-
-        without = len(without_dummy_true_type_error) + len(without_dummy_none_error) + len(without_dummy_incompatible)
-
-        print("{:<5}{:<5}{:<5}{:<5}{:<5}{:<5}{:<5}{:<5}{:<5}{:<5}".format(
-                round(cloc_result / 1000),
-                len(mypy_true_type_error) if mypy_list is not None else -1,
-                len(pytype_true_type_error),
-                round((len(real_pyre_errors))),
-                round((len(pyright_errors))),
-                round((len(pyinder_errors))),
-                round((len(pyinder_errors)) / cloc_result*1000, 2),
-                len(without_score_errors),
-                round(without, 2),
+        if (RESULT_PATH / "pyinder" / target_project).exists() :
+            with open(RESULT_PATH / "pyinder" / target_project / "filter_result.json", 'w') as f :
+                json.dump(pyinder_errors, f, indent=4)
                 
-                round((1 - (len(pyinder_errors) / max(without, 1))) * 100),
-                #round((len(pyright_annotated_true_type_error) + len(pyright_annotated_none_error)), 2),
-            ))
-        #print()
-        """
-        # print_errors_of_file
-        if detail :
-            for k, v in pyre_result.items() :
-                pyre_num = v['num']
-                pyright_num = pyright_result.get(k, dict()).get('num', 0)
 
-                total_pyinder += pyre_num
-                total_pyright += pyright_num
-                print('{:<10}{:<10}{}'.format(pyre_num, pyright_num, k))
+        if (RESULT_PATH / "pyright" / target_project).exists() :
+            with open(RESULT_PATH / "pyright" / target_project / "filter_result.json", 'w') as f :
+                json.dump(pyright_errors, f, indent=4)
 
-            pyright_only = { k : pyright_result[k] for k in set(pyright_result) - set(pyre_result) }
-
-            for k, v in pyright_only.items() :
-                pyright_num = v['num']
-                total_pyright += pyright_num
-                print('{:<10}{:<10}{}'.format(0, pyright_num, k))
-        """
-
-    total_kloc = 0
-    total_project_alarm = 0
-    total_baseline_alarm = 0
-    total_noscore_alarm = 0
-    total_real_pyre_alarm = 0
-    total_pyright_alarm = 0
-    total_mypy_alarm = 0
-    total_pytype_alarm = 0
-
-    per_bench_baseline_alarm = 0
-    per_bench_noscore_alarm = 0
-    per_bench_real_pyre_alarm = 0
-    per_bench_pyright_alarm = 0
-    per_bench_mypy_alarm = 0
-    per_bench_pytype_alarm = 0
-    per_bench_pyinder_alarm = 0
-
-    print ("{:<20}{:<8}{:<8}{:<8}{:<8}{:<8}{:<8}{:<8}".format(
-        "Project",
-        "KLOC",
-        "N Filter",
-        "N Score",
-        "Mypy",
-        "Pyre",
-        "Pyright",
-        "Pyinder",
-    ))
-
-    sorted_set = sorted(project_set)
-    for p in sorted_set :
-        print ("{:<20}{:<8}{:<8}{:<8}{:<8}{:<8}{:<8}{:<8}{:<8} ... {:<6} {:<6}".format(
-            p,
-            round((kloc[p]) / project_num[p]),
-            round((baseline_alarm[p]['type_error'] + baseline_alarm[p]['none_error']) / project_num[p]),
-            round((noscore_alarm[p]['type_error'] + noscore_alarm[p]['none_error'])),
-            round((pytype_alarm[p]['type_error'])),
-            round((mypy_alarm[p].get('type_error', 0))),
-            round((real_pyre_alarm[p]['type_error'] + real_pyre_alarm[p]['none_error'])),
-            round((pyright_alarm[p]['type_error'] + pyright_alarm[p]['none_error'])),
-            round((project_alarm[p]['type_error'] + project_alarm[p]['none_error']) / project_num[p]),
-            round((1 -(noscore_alarm[p]['type_error'] + noscore_alarm[p]['none_error']) / max(baseline_alarm[p]['type_error'] + baseline_alarm[p]['none_error'], 1)) * 100, 2),
-            round((1 -(project_alarm[p]['type_error'] + project_alarm[p]['none_error']) / max(baseline_alarm[p]['type_error'] + baseline_alarm[p]['none_error'], 1)) * 100, 2),
-        ))
-        total_kloc += kloc[p]
+        if (RESULT_PATH / "pyre" / target_project).exists() :
+            with open(RESULT_PATH / "pyre" / target_project / "filter_result.json", 'w') as f :
+                json.dump(pyre_errors, f, indent=4)
         
-        total_baseline_alarm += (baseline_alarm[p]['type_error'] + baseline_alarm[p]['none_error'])
-        total_noscore_alarm += (noscore_alarm[p]['type_error'] + noscore_alarm[p]['none_error'])
-        total_project_alarm += (project_alarm[p]['type_error'] + project_alarm[p]['none_error'])
-        total_real_pyre_alarm += (real_pyre_alarm[p]['type_error'] + real_pyre_alarm[p]['none_error'])
-        total_pyright_alarm += (pyright_alarm[p]['type_error'] + pyright_alarm[p]['none_error'])
-        total_mypy_alarm += (mypy_alarm[p].get('type_error', 0))
-        total_pytype_alarm += (pytype_alarm[p]['type_error'])
+        if (RESULT_PATH / "mypy" / target_project).exists() :
+            with open(RESULT_PATH / "mypy" / target_project / "filter_result.json", 'w') as f :
+                json.dump(mypy_true_type_error, f, indent=4)
 
-        per_bench_baseline_alarm += (baseline_alarm[p]['type_error'] + baseline_alarm[p]['none_error']) / project_num[p]
-        per_bench_noscore_alarm += (noscore_alarm[p]['type_error'] + noscore_alarm[p]['none_error']) / project_num[p]
-        per_bench_real_pyre_alarm += (real_pyre_alarm[p]['type_error'] + real_pyre_alarm[p]['none_error']) / project_num[p]
-        per_bench_pyright_alarm += (pyright_alarm[p]['type_error'] + pyright_alarm[p]['none_error']) / project_num[p]
-        per_bench_mypy_alarm += (mypy_alarm[p].get('type_error', 0)) / project_num[p]
-        per_bench_pytype_alarm += (pytype_alarm[p]['type_error']) / project_num[p]
-        per_bench_pyinder_alarm += (project_alarm[p]['type_error'] + project_alarm[p]['none_error']) / project_num[p]
-
-
-    print(
-        round(total_kloc, 2),
-        round(total_baseline_alarm, 2),
-        round(total_noscore_alarm, 2),
-        round(total_mypy_alarm, 2),
-        round(total_pytype_alarm, 2),
-        round(total_real_pyre_alarm, 2),
-        round(total_pyright_alarm, 2),
-        round(total_project_alarm, 2),
-        round((1 - total_noscore_alarm / total_baseline_alarm) * 100, 2),
-        round((1 - total_project_alarm / total_baseline_alarm) * 100, 2),
-    )
-
-    print(
-        round(per_bench_baseline_alarm / len(project_set), 2),
-        round(per_bench_noscore_alarm / len(project_set), 2),
-        round(per_bench_mypy_alarm / len(project_set), 2),
-        round(per_bench_pytype_alarm / len(project_set), 2),
-        round(per_bench_real_pyre_alarm / len(project_set), 2),
-        round(per_bench_pyright_alarm / len(project_set), 2),
-        round(per_bench_pyinder_alarm / len(project_set), 2),
-    )
-
-    with open("pyright_data.pickle", "wb") as fw :
-        pickle.dump(all_pyright, fw) 
-
-    with open("pyinder_data.pickle", "wb") as fw :
-        pickle.dump(all_pyinder, fw)
-
-    with open("pyinder_filter_data.pickle", "wb") as fw:
-        pickle.dump(filter_pyinder, fw)
-
-    print(len(filter_pyinder))
-
-
-    """ for p in project_set :
-        print(
-            p, 
-            round((kloc[p]) / project_num[p]),
-            round((project_alarm[p]['type_error'] + project_alarm[p]['none_error']) / project_num[p]),
-            round((baseline_alarm[p]['type_error'] + baseline_alarm[p]['none_error']) / project_num[p]),
-
-            100 - (round((project_alarm[p]['type_error'] + project_alarm[p]['none_error']) / project_num[p]) / round((baseline_alarm[p]['type_error'] + baseline_alarm[p]['none_error']) / project_num[p])) * 100,
-
-            round((noscore_alarm[p]['type_error'] + noscore_alarm[p]['none_error']) / project_num[p])
-        ) """
-
-    """ for p in project_set :
-        print(
-            p, 
-            round((project_alarm[p]['type_error'] + project_alarm[p]['none_error']) / project_num[p]),
-            round(project_alarm[p]['none_error'] / (project_alarm[p]['none_error'] + project_alarm[p]['type_error']) * 100), 
-            round((pyright_alarm[p]['type_error'] + pyright_alarm[p]['none_error']) / project_num[p]),
-            round(pyright_alarm[p]['none_error'] / (pyright_alarm[p]['none_error'] + pyright_alarm[p]['type_error']) * 100)
-        ) """
-    # print('{:<10}{:<10}{:<5}'.format(round(total_pyinder_alarm / 14), round(total_pyright_alarm / 14), round(total_pyinder_alarm/total_pyright_alarm - 1, 4) * 100))
-
-        
-
-
+        if (RESULT_PATH / "pytype" / target_project).exists() :
+            with open(RESULT_PATH / "pytype" / target_project / "filter_result.json", 'w') as f :
+                json.dump(pytype_true_type_error, f, indent=4)
 
 
 def main(argv) :

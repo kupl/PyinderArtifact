@@ -137,8 +137,7 @@ def run(skip) :
 
             print('Done!')
         except Exception as e :
-            print(e)
-            print('Skip')
+            print('Failed')
 
 
 def bugsinpy_run(skip) :
@@ -177,8 +176,7 @@ def bugsinpy_run(skip) :
 
             print('Done!')
         except Exception as e :
-            print(e)
-            print('Skip')
+            print('Failed')
 
 def excepy_run(skip) :
     for target_project in excepy_projects :
@@ -216,8 +214,7 @@ def excepy_run(skip) :
 
             print('Done!')
         except Exception as e :
-            print(e)
-            print('Skip')
+            print('Failed')
 
 def main(argv) :
     skip = False
@@ -225,12 +222,12 @@ def main(argv) :
         # :가 붙으면 인수를 가지는 옵션
 	    opts, args = getopt.getopt(argv, "hs:", ["skip="])
     except getopt.GetoptError:
-	    print ('pyre_test.py --skip(or -s) <True/False>')
+	    print ('mypy_change_json.py --skip(or -s) <True/False>')
 	    sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
-            print ('pyre_test.py --skip(or -s) <True/False>')
+            print ('mypy_change_json.py --skip(or -s) <True/False>')
             sys.exit()
         elif opt in ("-s", "--skip"):
             skip = bool(arg)

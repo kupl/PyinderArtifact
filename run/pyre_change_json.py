@@ -84,7 +84,7 @@ excepy_projects = [
 
 
 CONFIG_PATH = Path.home() / "configuration" / "config"
-RESULT_PATH = Path.home() / "result" / "pyinder"
+RESULT_PATH = Path.home() / "result" / "pyre"
 # make directory for result
 if not os.path.exists(RESULT_PATH):
     RESULT_PATH.mkdir(parents=True)
@@ -167,12 +167,12 @@ def main(argv) :
     try:
 	    opts, args = getopt.getopt(argv, "hs:", ["skip="])
     except getopt.GetoptError:
-	    print ('pyinder_change_json.py --skip(or -s) <True/False>')
+	    print ('pyre_change_result.py --skip(or -s) <True/False>')
 	    sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
-            print ('pyinder_change_json.py --skip(or -s) <True/False>')
+            print ('pyre_change_result.py --skip(or -s) <True/False>')
             sys.exit()
         elif opt in ("-s", "--skip"):
             skip = bool(arg)

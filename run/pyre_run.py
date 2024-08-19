@@ -86,7 +86,7 @@ excepy_projects = [
 ]
 
 CONFIG_PATH = Path.home() / "configuration" / "config"
-RESULT_PATH = Path.home() / "result" / "pyinder"
+RESULT_PATH = Path.home() / "result" / "pyre"
 # make directory for result
 if not os.path.exists(RESULT_PATH):
     RESULT_PATH.mkdir(parents=True)
@@ -119,7 +119,7 @@ def run(skip, project, num) :
             print('Skip!')
             continue
 
-        command = './run.sh {}'.format(str(config_path))
+        command = './run_pyre.sh {}'.format(str(config_path))
 
         with open(os.devnull) as DEVNULL:
             result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.getcwd())
@@ -164,7 +164,7 @@ def bugsinpy_run(skip, project, num) :
             print('Skip!')
             continue
 
-        command = './run.sh {}'.format(str(config_path))
+        command = './run_pyre.sh {}'.format(str(config_path))
 
 
         with open(os.devnull) as DEVNULL:
@@ -205,7 +205,7 @@ def excepy_run(skip, project, num) :
             print('Skip!')
             continue
 
-        command = './run.sh {}'.format(str(config_path))
+        command = './run_pyre.sh {}'.format(str(config_path))
 
         with open(os.devnull) as DEVNULL:
             result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.getcwd())

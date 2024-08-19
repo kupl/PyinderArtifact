@@ -99,6 +99,7 @@ def check_directory_and_make_directory(path) :
     os.mkdir(path)
 
 def run(skip, project, num) :
+    total_time = dict()
     for target_project in target_projects :
         if project :
             if num :
@@ -133,13 +134,18 @@ def run(skip, project, num) :
             timeDelta = time.time() - timeStarted  
 
             print("Finished process in "+str(timeDelta)+" seconds.")
+            total_time[target_project] = timeDelta
 
         a = ast.literal_eval(out.decode('utf-8'))
 
         with open(result_file, 'w+') as f :
             json.dump(a, f, indent=4)
 
+    with open(RESULT_PATH / 'typebugs_time.json', 'w+') as f :
+        json.dump(total_time, f, indent=4)
+
 def bugsinpy_run(skip, project, num) :
+    total_time = dict()
     for target_project in bugsinpy_projects :
         if project :
             if num :
@@ -175,13 +181,18 @@ def bugsinpy_run(skip, project, num) :
             timeDelta = time.time() - timeStarted  
 
             print("Finished process in "+str(timeDelta)+" seconds.")
+            total_time[target_project] = timeDelta
 
         a = ast.literal_eval(out.decode('utf-8'))
 
         with open(result_file, 'w+') as f :
             json.dump(a, f, indent=4)
 
+    with open(RESULT_PATH / 'bugsinpy_time.json', 'w+') as f :
+        json.dump(total_time, f, indent=4)
+
 def excepy_run(skip, project, num) :
+    total_time = dict()
     for target_project in excepy_projects :
         if project :
             if num :
@@ -219,12 +230,15 @@ def excepy_run(skip, project, num) :
             timeDelta = time.time() - timeStarted  
 
             print("Finished process in "+str(timeDelta)+" seconds.")
+            total_time[target_project] = timeDelta
 
         a = ast.literal_eval(out.decode('utf-8'))
 
         with open(result_file, 'w+') as f :
             json.dump(a, f, indent=4)
 
+    with open(RESULT_PATH / 'excepy_time.json', 'w+') as f :
+        json.dump(total_time, f, indent=4)
 
 def main(argv) :
     parser = argparse.ArgumentParser()
