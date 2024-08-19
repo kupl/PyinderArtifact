@@ -103,30 +103,16 @@ def pytype_config_change(path, file_content, prj):
     new_pytype_content = []
     for line in pytype_content:
         if "inputs = " in line:
-            # idx = line.rfind(prj)
-            # src_path = line[idx+len(prj):]
-            if '[' in line and ']' in line:
-                src_paths = line[10:-1]
-                divide_paths = src_paths.split()
-                new_src_paths = ""
-                for divide_path in divide_paths:
-                    idx = divide_path.find(prj)
-                    new_path = path + divide_path[idx+len(prj):]
-                    new_src_paths += new_path + " "
+            src_paths = line[9:]
+            divide_paths = src_paths.split()
+            new_src_paths = ""
+            for divide_path in divide_paths:
+                idx = divide_path.find(prj)
+                new_path = path + divide_path[idx+len(prj):]
+                new_src_paths += new_path + " "
 
-                new_src_paths = new_src_paths.strip()
-                new_pytype_content.append(f"inputs = [{new_src_paths}]")
-            else:
-                src_paths = line[9:]
-                divide_paths = src_paths.split()
-                new_src_paths = ""
-                for divide_path in divide_paths:
-                    idx = divide_path.find(prj)
-                    new_path = path + divide_path[idx+len(prj):]
-                    new_src_paths += new_path + " "
-
-                new_src_paths = new_src_paths.strip()
-                new_pytype_content.append(f"inputs = {new_src_paths}")
+            new_src_paths = new_src_paths.strip()
+            new_pytype_content.append(f"inputs = {new_src_paths}")
                 
         elif "pythonpath = " in line:
             idx = line.rfind(prj)
@@ -149,11 +135,10 @@ def pyright_config_change(path, file_content, prj):
         src_path = line[idx+len(prj):]
         new_contents.append(f".{src_path}")
     file_content["include"] = new_contents
-    if "typeshedPath" in file_content:
-        if "requests" in prj:
-            file_content["typeshedPath"] = str(HOME_PATH / "Pyinder/stubs/typeshed/typeshed-without-requests")
-        elif "Pillow" in prj:
-            file_content["typeshedPath"] = str(HOME_PATH / "Pyinder/stubs/typeshed/typeshed-without-Pillow")
+    if "requests" in prj:
+        file_content["typeshedPath"] = str(HOME_PATH / "Pyinder/stubs/typeshed/typeshed-without-requests")
+    elif "Pillow" in prj:
+        file_content["typeshedPath"] = str(HOME_PATH / "Pyinder/stubs/typeshed/typeshed-without-Pillow")
 
     return file_content
 
@@ -167,7 +152,7 @@ def pyre_config_change(path, file_content, prj):
 
     file_content["source_directories"] = new_source_directories
     if "requests" in prj:
-        file_content["typeshedPath"] = str(HOME_PATH / "Pyinder/stubs/typeshed/typeshed-without-requests")
+        file_content["typeshed"] = str(HOME_PATH / "Pyinder/stubs/typeshed/typeshed-without-requests")
     elif "Pillow" in prj:
         file_content["typeshed"] = str(HOME_PATH / "Pyinder/stubs/typeshed/typeshed-without-Pillow")
     else:
