@@ -2,7 +2,7 @@
 
 ```
 docker build -t pyinder:1.0 .
-docker run --name pyinder-container -it pyinder:1.0
+docker run --name pyinder-container --memory-reservation 24G -it pyinder:1.0
 ```
 
 ### Clone Repo and Setting Configuration
