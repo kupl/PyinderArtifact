@@ -45,7 +45,7 @@ docker run --name pyinder-container --memory-reservation 24G -it pyinder:1.0
 
 We recommend setting the memory reservation to 24GB for the container to fully run Pyinder.
 
-### Clone Repo of Benchmarks and Setting Configuration
+### Clone Benchmarks and Setting Configuration
 
 When you run the container, you can download repositories of benchmarks and set the configuration:
 
@@ -113,6 +113,8 @@ python pyinder_run.py -p airflow -n 3831
 # All tools are the same as above.
 ```
 
+Even though you test specific project, you can see the results by [following these steps](#postprocess-and-understanding-the-results).
+
 #### Full Evaluation
 
 You can run all tools with all projects by following the instructions:
@@ -131,12 +133,39 @@ python pyright_run.py
 - Pytype: may take more than 3 days...
 - Pyright: <4 hours
 
+Even if you skip specific tools, you can see the results by [following these steps](#postprocess-and-understanding-the-results).
+
 #### Output
 
-The output of each tool is stored in the `~/result/<each-tool>` directory (e.g., `~/result/pyinder`).
+The output of each tool is stored in the `~/result/<each-tool>` directory (e.g., `~/result/pyinder/airflow-3831`).
 
 ### Postprocess and Understanding the Results
 
 All tools generate other warnings than type errors, so you need to filter out the type errors from the results.
+At first, you have to change result log file to json file of each tool:
+
+
+```bash
+cd ~
+cd run
+# Change the result log file to json file
+python pyinder_change_json.py
+python mypy_change_json.py
+python pytype_change_json.py
+```
+
+It makes json files named `result_.json` in the `~/result/<each-tool>` directory (e.g., `~/result/pyinder/airflow-3831/result_.json`).
+(Pyright does not need to change the result log file.)
+
+Then, you can filter out the type errors from the results:
+
+```bash
+cd ~
+cd run
+python filter_error.py
+```
+
+You can see the filtered results in the `~/result/<each-tool>` directory (e.g., `~/result/pyinder/airflow-3831/filter_error.json`).
+
 
 ## Install Pyre 
