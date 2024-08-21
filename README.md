@@ -7,7 +7,9 @@ This repository is for the implementation of Pyinder announced in the paper
 
 We recommend the following environment for running Pyinder:
 - **OS**: A Linux System with [Docker](https://docs.docker.com/get-docker/) support
-- **Hardware**: x86 CPU; 32GB RAM; 50GB Storage 
+- **Hardware**: x86 CPU; 64GB RAM; 50GB Storage 
+
+(the minimum RAM requirement has been confirmed to be 32GB)
 
 Before setting up the environment, please make sure that you have [Docker](https://docs.docker.com/get-docker/) installed.
 
@@ -128,10 +130,11 @@ python pytype_run.py
 python pyright_run.py
 ```
 
-- Pyinder: <18 hours
-- Mypy: <2 hours
-- Pytype: may take more than 3 days...
-- Pyright: <4 hours
+When we ran full evaluation on our machine (2x Intel(R) Xeon(R) Silver 4214, 128GB), the time was measured as follows:
+- Pyinder: about 12 hours
+- Mypy: about 2 hours
+- Pytype: about 5 days
+- Pyright: about 3 hours
 
 Even if you skip specific tools, you can see the results by [following these steps](#postprocess-and-understanding-the-results).
 
@@ -167,5 +170,55 @@ python filter_error.py
 
 You can see the filtered results in the `~/result/<each-tool>` directory (e.g., `~/result/pyinder/airflow-3831/filter_error.json`).
 
+Then, you can see the results:
+
+```bash
+cd ~
+cd eval
+python check_alarm.py # show the number of alarms by each tool
+python check_correct.py # show the number of detecting type errors by each tool
+```
 
 ## Install Pyre 
+
+Before you install [Pyre](https://github.com/facebook/pyre-check), make sure not to install Pyinder (because Pyinder is built on the top of Pyre, so it causes linking issues...)
+
+### Installation
+
+You can install Pyre easily:
+
+```bash
+pip install pyre-check
+```
+
+You can see detailed instructions in officiatl documents ([Installation](https://pyre-check.org/docs/installation/))
+
+### Run Pyre
+
+You can run Pyre in a similar way to the other tools:
+
+```bash
+cd ~
+cd run
+python pyre_run.py
+```
+
+### See the Results
+
+You have to do postprocess in a similary way to the other tools:
+
+```bash
+cd ~
+cd run
+python pyre_change_json.py
+python filter_error.py
+```
+
+Then, you can see the results:
+
+```bash
+cd ~
+cd eval
+python check_alarm.py
+python check_correct.py
+```
