@@ -103,8 +103,6 @@ pyinder_op_msg.add("In call `filter.__init__`,")
 pyinder_op_msg.add("Unexpected keyword argument")
 pyinder_op_msg.add("`str` has no attribute `decode`")
 pyinder_op_msg.add("`bytes` has no attribute `encode`")
-# pyinder_op_msg.add("Missing argument")
-# pyinder_op_msg.add("Too many arguments")
 
 pyright_op_msg.add("in function \"len\"")
 pyright_op_msg.add("in function \"sorted\"")
@@ -937,6 +935,7 @@ def run(project, num, detail) :
         total_inter = 0
         
         pyinder_list = to_list(pyinder_result)
+
         pyre_list = to_list(pyre_result)
         pyright_list = to_list(pyright_result)
         mypy_list = mypy_result

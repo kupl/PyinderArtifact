@@ -78,6 +78,7 @@ target_projects = [
 ]
 
 RESULT_PATH = HOME_PATH / "result"
+CLOC_PATH = HOME_PATH / "cloc"
 pyinder_path = RESULT_PATH / "pyinder"
 mypy_path = RESULT_PATH / "mypy"
 pyre_path = RESULT_PATH / "pyre"
@@ -90,6 +91,17 @@ def run(project, num):
     pyre_alarms = 0
     pytype_alarms = 0
     pyright_alarms = 0
+
+    pyinder_cloc = 0
+    mypy_cloc = 0
+    pyre_cloc = 0
+    pytype_cloc = 0
+    pyright_cloc = 0
+
+    # check if cloc exists
+    if not CLOC_PATH.exists():
+        print("No cloc result found. Please run cloc.py first!")
+        exit(-1)
 
     # check if path exists
     if not pyinder_path.exists():
@@ -163,33 +175,41 @@ def run(project, num):
         except FileNotFoundError:
             pyright = None
 
+        with open(CLOC_PATH / f"{target_project}.json", "r") as f:
+            cloc = json.load(f)["SUM"]["code"]
+
         if pyinder:
             print("{:<10}".format(len(pyinder)), end="")
             pyinder_alarms += len(pyinder)
+            pyinder_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
 
         if mypy:
             print("{:<10}".format(len(mypy)), end="")
             mypy_alarms += len(mypy)
+            mypy_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
 
         if pyre:
             print("{:<10}".format(len(pyre)), end="")
             pyre_alarms += len(pyre)
+            pyre_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
         
         if pytype:
             print("{:<10}".format(len(pytype)), end="")
             pytype_alarms += len(pytype)
+            pytype_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
         
         if pyright:
             print("{:<10}".format(len(pyright)), end="")
             pyright_alarms += len(pyright)
+            pyright_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
 
@@ -201,11 +221,25 @@ def run(project, num):
     print("{:<10}".format(pyre_alarms), end="")
     print("{:<10}".format(pytype_alarms), end="")
     print("{:<10}".format(pyright_alarms), end="")
+    print()
+
+    pyinder_per_cloc = round(pyinder_alarms / pyinder_cloc / 1000, 2) if pyinder_cloc != 0 else "N/A"
+    mypy_per_cloc = round(mypy_alarms / mypy_cloc / 1000, 2) if mypy_cloc != 0 else "N/A"
+    pyre_per_cloc = round(pyre_alarms / pyre_cloc / 1000, 2) if pyre_cloc != 0 else "N/A"
+    pytype_per_cloc = round(pytype_alarms / pytype_cloc / 1000, 2) if pytype_cloc != 0 else "N/A"
+    pyright_per_cloc = round(pyright_alarms / pyright_cloc / 1000, 2) if pyright_cloc != 0 else "N/A"
+
+    print("{:<20}".format("Per 1k LOC"), end="")
+    print("{:<10}".format(pyinder_per_cloc), end="")
+    print("{:<10}".format(mypy_per_cloc), end="")
+    print("{:<10}".format(pyre_per_cloc), end="")
+    print("{:<10}".format(pytype_per_cloc), end="")
+    print("{:<10}".format(pyright_per_cloc), end="")
 
     print()
 
-    total_numpy = np.array([pyinder_alarms, mypy_alarms, pyre_alarms, pytype_alarms, pyright_alarms])
-    pd.DataFrame(total_numpy, columns=["Pyinder", "Mypy", "Pyre", "Pytype", "Pyright"]).to_csv("alarm_result.csv", index=False)
+    total_numpy = np.array([pyinder_per_cloc, mypy_per_cloc, pyre_per_cloc, pytype_per_cloc, pyright_per_cloc])
+    pd.DataFrame([total_numpy], columns=["Pyinder", "Mypy", "Pyre", "Pytype", "Pyright"]).to_csv("alarm_result.csv", index=False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
