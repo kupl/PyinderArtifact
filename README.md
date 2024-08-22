@@ -22,8 +22,8 @@ docker --version
 
 Clone the repository:
 
-```
-https://github.com/kupl/PyinderArtifact.git
+```bash
+git clone https://github.com/kupl/PyinderArtifact.git
 cd PyinderArtifact
 ```
 

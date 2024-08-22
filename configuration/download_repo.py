@@ -44,8 +44,6 @@ def clone_and_checkout(project, info, benchmark):
     print(f"Checking out commit {commit_id}...")
     repo = git.Repo(new_repo_dir)
     repo.git.checkout(commit_id, force=True)
-    if project == 'salt-52624':
-        repo.git.checkout("9a1ed78cca", "tests/unit/cli/test_batch.py", force=True)
 
 def run():
     for project, info in typebugs_repo.items():
