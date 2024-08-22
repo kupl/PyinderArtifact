@@ -1,11 +1,7 @@
 FROM ocaml/opam:ubuntu-22.04-ocaml-4.10
 
 USER root
-<<<<<<< HEAD
-RUN apt-get update && apt-get install -y git python3.9 python3.10 software-properties-common python3-pip
-=======
 RUN apt-get update && apt-get install -y git python3.10 software-properties-common python3-pip cloc
->>>>>>> 559b7b6980c28c2d535282200b8468f3ce8688c7
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
 ENV HOME /home/opam
