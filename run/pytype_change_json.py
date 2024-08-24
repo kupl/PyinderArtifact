@@ -117,8 +117,8 @@ def run(skip) :
             print(target_project + ' is analyzed... ', end='', flush=True)
 
             result_path = RESULT_PATH / target_project
-            result_file = result_path + '/result.json'
-            result_file2 = result_path + '/result_.json'
+            result_file = result_path / 'result.json'
+            result_file2 = result_path / 'result_.json'
 
             with open(result_file, 'r') as f :
                 a = ast.literal_eval(f.read())

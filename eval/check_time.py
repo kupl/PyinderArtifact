@@ -85,12 +85,39 @@ pyre_path = RESULT_PATH / "pyre"
 pytype_path = RESULT_PATH / "pytype"
 pyright_path = RESULT_PATH / "pyright"
 
+def merge_time_json(result_path):
+    try:
+        with open(result_path / "typebugs_time.json", "r") as f:
+            typebugs_time = json.load(f)
+    except FileNotFoundError:
+        typebugs_time = {}
+
+    try:
+        with open(result_path / "bugsinpy_time.json", "r") as f:
+            bugsinpy_time = json.load(f)
+    except FileNotFoundError:
+        bugsinpy_time = {}
+
+    try:
+        with open(result_path / "excepy_time.json", "r") as f:
+            excepy_time = json.load(f)
+    except FileNotFoundError:
+        excepy_time = {}
+
+    # merge all time json
+    all_time = {}
+    all_time.update(typebugs_time)
+    all_time.update(bugsinpy_time)
+    all_time.update(excepy_time)
+
+    return all_time
+
 def run(project, num):
-    pyinder_alarms = 0
-    mypy_alarms = 0
-    pyre_alarms = 0
-    pytype_alarms = 0
-    pyright_alarms = 0
+    pyinder_times = 0
+    mypy_times = 0
+    pyre_times = 0
+    pytype_times = 0
+    pyright_times = 0
 
     pyinder_cloc = 0
     mypy_cloc = 0
@@ -135,6 +162,12 @@ def run(project, num):
 
     print()
 
+    pyinder_time = merge_time_json(pyinder_path)
+    mypy_time = merge_time_json(mypy_path)
+    pyre_time = merge_time_json(pyre_path)
+    pytype_time = merge_time_json(pytype_path)
+    pyright_time = merge_time_json(pyright_path)
+
     for target_project in target_projects:
         if project :
             if num :
@@ -145,70 +178,46 @@ def run(project, num):
                     continue
 
         print("{:<20}".format(target_project), end="")
-        try:
-            with open(pyinder_path / target_project / "filter_result.json", "r") as f:
-                pyinder = json.load(f)
-        except FileNotFoundError:
-            pyinder = None
-
-        try:
-            with open(mypy_path / target_project / "filter_result.json", "r") as f:
-                mypy = json.load(f)
-        except FileNotFoundError:
-            mypy = None
-
-        try:
-            with open(pyre_path / target_project / "filter_result.json", "r") as f:
-                pyre = json.load(f)
-        except FileNotFoundError:
-            pyre = None
-
-        try:
-            with open(pytype_path / target_project / "filter_result.json", "r") as f:
-                pytype = json.load(f)
-        except FileNotFoundError:
-            pytype = None
-
-        try:
-            with open(pyright_path / target_project / "filter_result.json", "r") as f:
-                pyright = json.load(f)
-        except FileNotFoundError:
-            pyright = None
+        pyinder = pyinder_time.get(target_project)
+        mypy = mypy_time.get(target_project)
+        pyre = pyre_time.get(target_project)
+        pytype = pytype_time.get(target_project)
+        pyright = pyright_time.get(target_project)
 
         with open(CLOC_PATH / f"{target_project}.json", "r") as f:
             cloc = json.load(f)["SUM"]["code"]
 
         if pyinder is not None:
-            print("{:<10}".format(len(pyinder)), end="")
-            pyinder_alarms += len(pyinder)
+            print("{:<10}".format(round(pyinder,2)), end="")
+            pyinder_times += round(pyinder,2)
             pyinder_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
 
         if mypy is not None :
-            print("{:<10}".format(len(mypy)), end="")
-            mypy_alarms += len(mypy)
+            print("{:<10}".format(round(mypy,2)), end="")
+            mypy_times += round(mypy,2)
             mypy_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
 
         if pyre is not None :
-            print("{:<10}".format(len(pyre)), end="")
-            pyre_alarms += len(pyre)
+            print("{:<10}".format(round(mypy,2)), end="")
+            pyre_times += round(mypy,2)
             pyre_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
         
         if pytype is not None :
-            print("{:<10}".format(len(pytype)), end="")
-            pytype_alarms += len(pytype)
+            print("{:<10}".format(round(pytype,2)), end="")
+            pytype_times += round(pytype,2)
             pytype_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
         
         if pyright is not None :
-            print("{:<10}".format(len(pyright)), end="")
-            pyright_alarms += len(pyright)
+            print("{:<10}".format(round(pyright,2)), end="")
+            pyright_times += round(pyright,2)
             pyright_cloc += cloc
         else:
             print("{:<10}".format("N/A"), end="")
@@ -216,18 +225,18 @@ def run(project, num):
         print()
 
     print("{:<20}".format("Total"), end="")
-    print("{:<10}".format(pyinder_alarms), end="")
-    print("{:<10}".format(mypy_alarms), end="")
-    print("{:<10}".format(pyre_alarms), end="")
-    print("{:<10}".format(pytype_alarms), end="")
-    print("{:<10}".format(pyright_alarms), end="")
+    print("{:<10}".format(round(pyinder_times,2)), end="")
+    print("{:<10}".format(round(mypy_times,2)), end="")
+    print("{:<10}".format(round(pyre_times,2)), end="")
+    print("{:<10}".format(round(pytype_times, 2)), end="")
+    print("{:<10}".format(round(pyright_times,2)), end="")
     print()
 
-    pyinder_per_cloc = round(pyinder_alarms / pyinder_cloc * 1000, 2) if pyinder_cloc != 0 else "N/A"
-    mypy_per_cloc = round(mypy_alarms / mypy_cloc * 1000, 2) if mypy_cloc != 0 else "N/A"
-    pyre_per_cloc = round(pyre_alarms / pyre_cloc * 1000, 2) if pyre_cloc != 0 else "N/A"
-    pytype_per_cloc = round(pytype_alarms / pytype_cloc * 1000, 2) if pytype_cloc != 0 else "N/A"
-    pyright_per_cloc = round(pyright_alarms / pyright_cloc * 1000, 2) if pyright_cloc != 0 else "N/A"
+    pyinder_per_cloc = round(pyinder_times / pyinder_cloc * 1000, 2) if pyinder_cloc != 0 else "N/A"
+    mypy_per_cloc = round(mypy_times / mypy_cloc * 1000, 2) if mypy_cloc != 0 else "N/A"
+    pyre_per_cloc = round(pyre_times / pyre_cloc * 1000, 2) if pyre_cloc != 0 else "N/A"
+    pytype_per_cloc = round(pytype_times / pytype_cloc * 1000, 2) if pytype_cloc != 0 else "N/A"
+    pyright_per_cloc = round(pyright_times / pyright_cloc * 1000, 2) if pyright_cloc != 0 else "N/A"
 
     print("{:<20}".format("Per 1k LOC"), end="")
     print("{:<10}".format(pyinder_per_cloc), end="")
@@ -239,7 +248,7 @@ def run(project, num):
     print()
 
     total_numpy = np.array([pyinder_per_cloc, mypy_per_cloc, pyre_per_cloc, pytype_per_cloc, pyright_per_cloc])
-    pd.DataFrame([total_numpy], columns=["Pyinder", "Mypy", "Pyre", "Pytype", "Pyright"]).to_csv("alarm_result.csv", index=False)
+    pd.DataFrame([total_numpy], columns=["Pyinder", "Mypy", "Pyre", "Pytype", "Pyright"]).to_csv("time_result.csv", index=False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

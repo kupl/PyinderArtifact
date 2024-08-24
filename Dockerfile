@@ -14,7 +14,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install GitPython
 RUN (cd Pyinder ; pip3 install -r requirements.txt)
 
-RUN pip3 install pyright==1.1.339 mypy==1.9.0 pytype==2024.4.11 numpy pandas
+RUN pip3 install pyright==1.1.339 mypy==1.9.0 pytype==2024.4.11 numpy pandas matplotlib venn
 RUN apt-get install -y python3.9
 
 # Set up environemnt

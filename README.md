@@ -3,6 +3,8 @@
 This repository is for the implementation of Pyinder announced in the paper 
 "Towards Effective Static Type-Error Detection for Python" in ASE 2024.
 
+## Setup
+
 ### Prerequisites
 
 We recommend the following environment for running Pyinder:
@@ -42,10 +44,10 @@ After building the Docker image, you can run the container:
 
 ```bash
 # Run docker image
-docker run --name pyinder-container --memory-reservation 24G -it pyinder:1.0
+docker run --name pyinder-container --memory-reservation 32G -it pyinder:1.0
 ```
 
-We recommend setting the memory reservation to 24GB for the container to fully run Pyinder.
+We recommend setting the memory reservation to 32GB for the container to fully run Pyinder on the large projects.
 
 ### Clone Benchmarks and Setting Configuration
 
@@ -87,37 +89,54 @@ python run/change_core_async.py
 
 Then, you are ready to run Pyinder and other tools!
 
-### Run Tools
+## Evaluation
 
-#### Kick the tires
+### Kick the tires
 
-You can run all tools with specific project by `-p <project>` option:
+Before running experiments on all projects, first run a simple test to check if the tools are working properly:
 
 ```bash
 # It will take about 30 minutes 
-# to run all tools with the airflow project.
+# to run all tools with the luigi project.
 cd ~
 cd run
-# Run Pyinder with airflow projects
-python pyinder_run.py -p airflow
-# Run Mypy with airflow projects
-python mypy_run.py -p airflow
-# Run Pytype with airflow projects
-python pytype_run.py -p airflow
-# Run Pyright with airflow projects
-python pyright_run.py -p airflow
+# Run Pyinder with luigi projects
+python pyinder_run.py -p luigi
+# Run Mypy with luigi projects
+python mypy_run.py -p luigi
+# Run Pytype with luigi projects
+python pytype_run.py -p luigi
+# Run Pyright with luigi projects
+python pyright_run.py -p luigi
+
+# After running the tools on the luigi project, 
+# you can see the results by following these steps.
+
+# Change the result log file to json file
+python pyinder_change_json.py
+python mypy_change_json.py
+python pytype_change_json.py
+
+# Filter out the type errors from the results
+python filter_error.py
+
+# Run cloc to check the per kloc results
+cd ~
+cd eval
+python cloc.py
+
+# Then, check the results
+python check_alarm.py # show the number of alarms by each tool
+python check_correct.py # show the number of detecting type errors by each tool
+python check_time.py # show the time taken by each tool
 ```
 
-You also run specific version of the project by `-n <number>` option:
+Then, you can see the results in the console or check the csv files in the `~/eval` directory.
+- `alarm_result.csv`: the number of alarms by each tool
+- `correct_result.csv`: the number of detecting type errors by each tool
+- `time_result.csv`: the time taken by each tool
 
-```bash
-python pyinder_run.py -p airflow -n 3831
-# All tools are the same as above.
-```
-
-Even though you test specific project, you can see the results by [following these steps](#postprocess-and-understanding-the-results).
-
-#### Full Evaluation
+### Full Evaluation
 
 You can run all tools with all projects by following the instructions:
 
@@ -142,11 +161,26 @@ Even if you skip specific tools, you can see the results by [following these ste
 
 The output of each tool is stored in the `~/result/<each-tool>` directory (e.g., `~/result/pyinder/airflow-3831`).
 
+#### Other Options
+
+You can run all tools with specific project by `-p <project>` option:
+
+```bash
+python pyinder_run.py -p luigi
+# Other tools are the same as above.
+```
+
+You also run specific version of the project by `-n <number>` option:
+
+```bash
+python pyinder_run.py -p luigi -n 1836
+# Other tools are the same as above.
+```
+
 ### Postprocess and Understanding the Results
 
 All tools generate other warnings than type errors, so you need to filter out the type errors from the results.
 At first, you have to change result log file to json file of each tool:
-
 
 ```bash
 cd ~
@@ -170,14 +204,38 @@ python filter_error.py
 
 You can see the filtered results in the `~/result/<each-tool>` directory (e.g., `~/result/pyinder/airflow-3831/filter_error.json`).
 
-Then, you can see the results:
+Before checking the results, you have to run cloc to check the per kloc results:
+
+```bash
+cd ~
+cd eval
+python cloc.py
+```
+
+Then, you can see the results by following these steps:
 
 ```bash
 cd ~
 cd eval
 python check_alarm.py # show the number of alarms by each tool
 python check_correct.py # show the number of detecting type errors by each tool
+python check_time.py # show the time taken by each tool
 ```
+
+The csv files are generated in the `~/eval` directory:
+- `alarm_result.csv`: the number of alarms by each tool (Table 2)
+- `correct_result.csv`: the number of detecting type errors by each tool (Figure 4)
+- `time_result.csv`: the time taken by each tool (Table 2)
+> Note : The results can be slightly different from the paper because the tools and [typeshed](https://github.com/python/typeshed) are updated.
+
+Moreover, you can see the venn diagram (Figure 4) of the results by this script:
+
+```bash
+# in the eval directory
+python draw_venn.py
+```
+
+It makes `result_venn.pdf` in the `~/eval` directory, and you can see the venn diagram of the results.
 
 ## Install Pyre 
 
@@ -219,6 +277,8 @@ Then, you can see the results:
 ```bash
 cd ~
 cd eval
+python cloc.py
 python check_alarm.py
 python check_correct.py
+python check_time.py
 ```
