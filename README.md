@@ -2,6 +2,7 @@
 
 This repository is for the implementation of Pyinder announced in the paper 
 "Towards Effective Static Type-Error Detection for Python" in ASE 2024.
+Our tool, Pyinder, is a static type analysis tool for Python that is built on top of Pyre.
 
 ## Setup
 
@@ -100,13 +101,10 @@ Before running experiments on all projects, first run a simple test to check if 
 # to run all tools with the luigi project.
 cd ~
 cd run
-# Run Pyinder with luigi projects
+# Run tools with luigi projects
 python pyinder_run.py -p luigi
-# Run Mypy with luigi projects
 python mypy_run.py -p luigi
-# Run Pytype with luigi projects
 python pytype_run.py -p luigi
-# Run Pyright with luigi projects
 python pyright_run.py -p luigi
 
 # After running the tools on the luigi project, 
