@@ -4,6 +4,8 @@ This repository is for the implementation of Pyinder announced in the paper
 "Towards Effective Static Type-Error Detection for Python" in ASE 2024.
 Our tool, Pyinder, is a static type analysis tool for Python that is built on top of Pyre.
 
+[Towards Effective Static Type-Error Detection for Python](https://drive.google.com/file/d/1t2J4fNyWScao9xwRcORBigKkO8dVJmsB/view?usp=sharing): Accepted Version
+
 ## Setup
 
 ### Prerequisites
