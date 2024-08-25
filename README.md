@@ -130,8 +130,8 @@ The result of each tool is stored in the `~/result/<each-tool>/<luigi-proejct>/r
 Next, post-process the results to collect the type errors and check the results:
 
 ```bash
-# After running the tools on the luigi project, 
-# you can see the results by following these steps.
+cd ~
+cd run
 
 # Change the result log file to json file
 python pyinder_change_json.py
@@ -173,6 +173,8 @@ The command `python cloc.py` makes the `~/cloc` directory that contains the resu
 Finally, you can see the results by following these steps:
 
 ```bash
+cd ~
+cd eval
 python check_alarm.py # show the number of alarms by each tool
 python check_correct.py # show the number of detecting type errors by each tool
 python check_time.py # show the time taken by each tool
