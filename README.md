@@ -121,7 +121,7 @@ You can see the output of each tool in the console like this:
 # luigi-14 is analyzed... Finished process in 74.57044434547424 seconds.
 ```
 
-The result of each tool is stored in the `~/result/<each-tool>/<luigi-proejct>` directory (e.g., `~/result/pyinder/luigi-1836`).
+The result of each tool is stored in the `~/result/<each-tool>/<luigi-proejct>/result.json` directory (e.g., `~/result/pyinder/luigi-1836/result.json`).
 </details>
 
 ---
