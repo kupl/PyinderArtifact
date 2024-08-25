@@ -108,6 +108,8 @@ python mypy_run.py -p luigi
 python pytype_run.py -p luigi
 python pyright_run.py -p luigi
 ```
+
+---
 <details>
 <summary>Click to see the output</summary>
 
@@ -122,7 +124,7 @@ You can see the output of each tool in the console like this:
 The result of each tool is stored in the `~/result/<each-tool>/<luigi-proejct>` directory (e.g., `~/result/pyinder/luigi-1836`).
 </details>
 
-<br/>
+---
 Next, post-process the results to collect the type errors and check the results:
 
 ```bash
@@ -142,6 +144,8 @@ cd ~
 cd eval
 python cloc.py
 ```
+
+---
 <details>
 <summary>Click to see the output</summary>
 
@@ -163,7 +167,7 @@ After running `python filter_error.py`, you can see the filtered results in the 
 The command `python cloc.py` makes the `~/cloc` directory that contains the results of cloc.
 </details>
 
-<br/>
+---
 Finally, you can see the results by following these steps:
 
 ```bash
@@ -172,6 +176,7 @@ python check_correct.py # show the number of detecting type errors by each tool
 python check_time.py # show the time taken by each tool
 ```
 
+---
 <details>
 <summary>Click to see the output</summary>
 
@@ -223,6 +228,7 @@ Total               237.6     15.54     0         723.34    27.39
 Per 1k LOC          6.04      0.39      N/A       18.38     0.7
 ```
 </details>
+---
 
 Then, you can see the results in the console or check the csv files in the `~/eval` directory.
 - `alarm_result.csv`: the number of alarms by each tool
