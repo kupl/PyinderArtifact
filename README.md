@@ -232,8 +232,8 @@ Total               237.6     15.54     0         723.34    27.39
 Per 1k LOC          6.04      0.39      N/A       18.38     0.7
 ```
 </details>
----
 
+---
 Then, you can see the results in the console or check the csv files in the `~/eval` directory.
 - `alarm_result.csv`: the number of alarms by each tool
 - `correct_result.csv`: the number of detecting type errors by each tool
