@@ -115,7 +115,7 @@ def run(skip) :
 
             print('Done!')
         except Exception as e :
-            print('Skip')
+            print('Failed')
 
 def bugsinpy_run(skip) :
     for target_project in bugsinpy_projects :
@@ -136,7 +136,7 @@ def bugsinpy_run(skip) :
 
             print('Done!')
         except Exception as e :
-            print('Skip')
+            print('Failed')
 
 def excepy_run(skip) :
     for target_project in excepy_projects :
@@ -159,8 +159,7 @@ def excepy_run(skip) :
 
             print('Done!')
         except Exception as e :
-            print(e)
-            print('Skip')
+            print('Failed')
 
 def main(argv) :
     skip = False

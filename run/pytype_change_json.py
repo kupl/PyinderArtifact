@@ -168,7 +168,7 @@ def run(skip) :
 
             print('Done!')
         except Exception as e :
-            print('Skip')
+            print('Failed')
 
 
 
