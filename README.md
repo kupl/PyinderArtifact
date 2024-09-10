@@ -224,6 +224,20 @@ Then, you can see the results in the console or check the csv files in the `~/ev
 
 If you want to reproduce the results in the paper, please refer to the [EVALUATION.md](./EVALUATION.md) file.
 
+## Code Structure
+
+```bash
+.
+├── Dockerfile     # Dockerfile for building the environment
+├── EVALUATION.md  # Full Evaluation instructions
+├── LICENSE
+├── Pyinder        # Pyinder source code
+├── README.md      
+├── configuration  # contains the configuration files and setting scripts
+├── eval           # contains the evaluation scripts
+└── run            # contains the scripts to run the tools
+```
+
 ## Contact
 
 If you have any questions, please contact us at [wonseok_oh@korea.ac.kr](mailto:wonseok_oh@korea.ac.kr)
