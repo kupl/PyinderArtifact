@@ -1,63 +1,6 @@
-## Prerequisites
+We assume that you have already done the installation steps in the [README.md](./README.md) file.
 
-We recommend the following environment for running Pyinder:
-- **OS**: A Linux System with [Docker](https://docs.docker.com/get-docker/) support
-- **Hardware**: x86 CPU; 64GB RAM; 50GB Storage 
-
-(the minimum RAM requirement has been confirmed to be 32GB)
-
-Before setting up the environment, please make sure that you have [Docker](https://docs.docker.com/get-docker/) installed.
-
-```bash
-docker --version
-# Docker version 20.10.13, build a224086
-```
-
-## Installation
-
-### Build Docker Image
-
-Clone the repository:
-
-```bash
-git clone https://github.com/kupl/PyinderArtifact.git
-cd PyinderArtifact
-```
-
-Then, build the Docker image:
-
-```bash
-docker build -t pyinder:1.0 .
-```
-
-In this step, [Mypy](https://github.com/python/mypy), [Pytype](https://github.com/google/pytype), and [Pyright](https://github.com/microsoft/pyright) are installed, but [Pyre](https://github.com/facebook/pyre-check) is not installed due to the compatibility issue, such as linking, with Pyinder. 
-You can install and run Pyre by following the instructions in the [Install Pyre](#install-pyre).
-
-### Run Docker Container
-
-After building the Docker image, you can run the container:
-
-```bash
-# Run docker image
-docker run --name pyinder-container --memory-reservation 32G -it pyinder:1.0
-```
-
-We recommend setting the memory reservation to 32GB for the container to fully run Pyinder on the large projects.
-
-### Build Pyinder
-
-You can build Pyinder by following the instructions:
-
-```bash
-# Inside the image;
-cd ~
-cd Pyinder/source
-make
-```
-
-Don't worry about the warning messages during the build process.
-However, if you see an error message `dune: No such file or directory` when running `make`,
-you need to type `eval $(opam config env)` before running `make`.
+## Preparing the Environment
 
 ### Clone Benchmarks and Setting Configuration
 
@@ -85,9 +28,7 @@ python run/change_core_async.py
 
 Then, you are ready to run Pyinder and other tools!
 
-## Evaluation
-
-### Full Evaluation
+## Reproducing the Results
 
 You can run all tools with all projects by following the instructions:
 
