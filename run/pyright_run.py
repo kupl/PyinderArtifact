@@ -106,7 +106,7 @@ def run(skip, project, num) :
                 if target_project != "{}-{}".format(project, num) :
                     continue 
             else :
-                if project not in target_projects :
+                if project not in target_project :
                     continue
 
         print(target_project + ' is analyzed... ', end='', flush=True)
@@ -152,7 +152,7 @@ def bugsinpy_run(skip, project, num) :
                 if target_project != "{}-{}".format(project, num) :
                     continue 
             else :
-                if project not in bugsinpy_projects :
+                if project not in target_project :
                     continue
 
 
@@ -199,7 +199,7 @@ def excepy_run(skip, project, num) :
                 if target_project != "{}-{}".format(project, num) :
                     continue 
             else :
-                if project not in excepy_projects :
+                if project not in target_project :
                     continue
 
 
