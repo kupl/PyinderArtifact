@@ -7,7 +7,7 @@ We assume that you have already done the installation steps in the [README.md](.
 When you run the container, you can download repositories of benchmarks and set the configuration:
 
 ```bash
-# Inside the image;
+# Inside the dokcer container;
 cd ~
 cd configuration
 python download_repo.py
@@ -22,6 +22,7 @@ If you can see `~/typebugs`, `~/bugsinpy`, and `~/excepy` directories, the downl
 It is necessary to preprocess the [homeassistant-core](https://github.com/home-assistant/core) project before running all tools:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 python run/change_core_async.py
 ```
@@ -33,6 +34,7 @@ Then, you are ready to run Pyinder and other tools!
 You can run all tools with all projects by following the instructions:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 cd run
 python pyinder_run.py
@@ -75,6 +77,7 @@ All tools generate other warnings than type errors, so you need to filter out th
 At first, you have to change result log file to json file of each tool:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 cd run
 # Change the result log file to json file
@@ -89,6 +92,7 @@ It makes json files named `result_.json` in the `~/result/<each-tool>` directory
 Then, you can filter out the type errors from the results:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 cd run
 python filter_error.py
@@ -99,6 +103,7 @@ You can see the filtered results in the `~/result/<each-tool>` directory (e.g., 
 Before checking the results, you have to run cloc to check the per kloc results:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 cd eval
 python cloc.py
@@ -107,6 +112,7 @@ python cloc.py
 Then, you can see the results by following these steps:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 cd eval
 python check_alarm.py # show the number of alarms by each tool

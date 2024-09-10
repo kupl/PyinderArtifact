@@ -59,7 +59,7 @@ We recommend setting the memory reservation to 32GB for the container to fully r
 You can build Pyinder by following the instructions:
 
 ```bash
-# Inside the image;
+# Inside the dokcer container;
 cd ~
 cd Pyinder/source
 make
@@ -80,7 +80,7 @@ You can skip instructions for other tools if you only want to run Pyinder.
 At first, clone the project and prepare the project for the analysis:
 
 ```bash
-# Inside the image;
+# Inside the dokcer container;
 cd ~
 cd configuration
 python download_repo.py --project luigi
@@ -90,6 +90,8 @@ python setting_config.py --project luigi
 Next, run the tools with the luigi project:
 
 ```bash
+# Inside the dokcer container;
+
 # It will take about 30 minutes 
 # to run all tools with the luigi project.
 cd ~
@@ -120,6 +122,7 @@ The result of each tool is stored in the `~/result/<each-tool>/<luigi-proejct>/r
 Next, post-process the results to collect the type errors and check the results:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 cd run
 
@@ -163,6 +166,7 @@ The command `python cloc.py` makes the `~/cloc` directory that contains the resu
 Finally, you can see the results by following these steps:
 
 ```bash
+# Inside the dokcer container;
 cd ~
 cd eval
 python check_alarm.py -p luigi # show the number of alarms by each tool
