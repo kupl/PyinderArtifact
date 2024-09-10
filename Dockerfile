@@ -8,8 +8,8 @@ ENV HOME /home/opam
 
 WORKDIR ${HOME}
 
-# Git clone Pyinder repo
-RUN git clone https://github.com/kupl/Pyinder.git
+# Copy Pyinder Source Code
+COPY Pyinder ${HOME}/Pyinder
 RUN pip3 install --upgrade pip
 RUN pip3 install GitPython
 RUN (cd Pyinder ; pip3 install -r requirements.txt)

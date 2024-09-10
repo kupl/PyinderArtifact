@@ -3,6 +3,7 @@ import os
 import json 
 from pathlib import Path
 import shutil
+import argparse
 
 # Git URL and commit ID for each project
 with open("typebugs_repo.json", "r") as f:
@@ -46,11 +47,22 @@ def clone_and_checkout(project, info, benchmark):
     repo.git.checkout(commit_id, force=True)
 
 def run():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--project", type=str, default=None)
+    args = ap.parse_args()
+    target = args.project
+
     for project, info in typebugs_repo.items():
+        if target and target in project:
+            continue
         clone_and_checkout(project, info, benchmark="typebugs")
     for project, info in bugsinpy_repo.items():
+        if target and target in project:
+            continue
         clone_and_checkout(project, info, benchmark="bugsinpy")
     for project, info in excepy_repo.items():
+        if target and target in project:
+            continue
         clone_and_checkout(project, info, benchmark="excepy")
 
 if __name__ == "__main__":
