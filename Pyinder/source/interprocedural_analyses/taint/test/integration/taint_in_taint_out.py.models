@@ -1,0 +1,1215 @@
+@generated
+{
+  "kind": "issue",
+  "data": {
+    "callable": "taint_in_taint_out.issue_with_indirect_sink_tito",
+    "callable_line": 98,
+    "code": 5002,
+    "line": 100,
+    "start": 33,
+    "end": 34,
+    "filename": "taint_in_taint_out.py",
+    "message": "Data from [Test] source(s) may reach [Test] sink(s)",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "leaves": [ { "name": "_test_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 99,
+              "start": 8,
+              "end": 22
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "always-via": "special_sink" },
+                  { "always-via": "string_concat_lhs" }
+                ],
+                "leaves": [ { "name": "_test_sink" } ],
+                "length": 2,
+                "kind": "Test"
+              }
+            ],
+            "call": {
+              "position": {
+                "filename": "taint_in_taint_out.py",
+                "line": 100,
+                "start": 33,
+                "end": 34
+              },
+              "resolves_to": [
+                "taint_in_taint_out.adds_tito_with_indirect_sink"
+              ],
+              "port": "formal(src)[add_tito]"
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "special_source" },
+      { "always-via": "special_sink" },
+      { "always-via": "string_concat_lhs" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "taint_in_taint_out.adds_tito_with_indirect_sink",
+      "index": 0,
+      "parameter": "formal(src)"
+    },
+    "master_handle":
+      "taint_in_taint_out.issue_with_indirect_sink_tito:5002:0:Call|taint_in_taint_out.adds_tito_with_indirect_sink|0|formal(src):2fbce496fb3c6d2b1ac7eb34c04a80c1"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "taint_in_taint_out.test_always_via_feature",
+    "callable_line": 177,
+    "code": 5002,
+    "line": 178,
+    "start": 15,
+    "end": 48,
+    "filename": "taint_in_taint_out.py",
+    "message": "Data from [Test] source(s) may reach [Test] sink(s)",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "leaves": [ { "name": "_test_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [
+              { "via": "string_concat_rhs" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 178, "start": 33, "end": 47 } ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 178,
+              "start": 33,
+              "end": 47
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "leaves": [ { "name": "_test_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 178,
+              "start": 15,
+              "end": 48
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "special_source" },
+      { "always-via": "special_sink" },
+      { "via": "string_concat_rhs" },
+      { "always-via": "tito" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "_test_sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "taint_in_taint_out.test_always_via_feature:5002:0:Call|_test_sink|0|formal(arg):5f5be39770a875ee131d712a9575c6ec"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "taint_in_taint_out.test_complex_evaluator",
+    "callable_line": 223,
+    "code": 5002,
+    "line": 224,
+    "start": 15,
+    "end": 62,
+    "filename": "taint_in_taint_out.py",
+    "message": "Data from [Test] source(s) may reach [Test] sink(s)",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "leaves": [ { "name": "_test_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [
+              { "always-via": "tito-broadening" },
+              { "always-via": "tito" },
+              { "always-via": "broadening" },
+              { "always-via": "obscure:unknown-callee" }
+            ],
+            "tito": [ { "line": 224, "start": 47, "end": 61 } ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 224,
+              "start": 47,
+              "end": 61
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "leaves": [ { "name": "_test_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 224,
+              "start": 15,
+              "end": 62
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "special_source" },
+      { "always-via": "special_sink" },
+      { "always-via": "tito-broadening" },
+      { "always-via": "tito" },
+      { "always-via": "broadening" },
+      { "always-via": "obscure:unknown-callee" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "_test_sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "taint_in_taint_out.test_complex_evaluator:5002:0:Call|_test_sink|0|formal(arg):ab8fd57412bae9ae7f76b9d9e5b62315"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "taint_in_taint_out.test_explicit_call_to_superclass",
+    "callable_line": 194,
+    "code": 5002,
+    "line": 196,
+    "start": 15,
+    "end": 23,
+    "filename": "taint_in_taint_out.py",
+    "message": "Data from [Test] source(s) may reach [Test] sink(s)",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "leaves": [ { "name": "_test_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [
+              { "has": "first-field" },
+              { "first-field": "arg" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 195, "start": 19, "end": 33 } ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 195,
+              "start": 19,
+              "end": 33
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "leaves": [ { "name": "_test_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 196,
+              "start": 15,
+              "end": 23
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "has": "first-field" },
+      { "first-field": "arg" },
+      { "always-via": "special_source" },
+      { "always-via": "special_sink" },
+      { "always-via": "tito" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "_test_sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "taint_in_taint_out.test_explicit_call_to_superclass:5002:0:Call|_test_sink|0|formal(arg):542fa2512fcbd87d221e85e3ff59321e"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "taint_in_taint_out.test_simplified_evaluator",
+    "callable_line": 203,
+    "code": 5002,
+    "line": 204,
+    "start": 15,
+    "end": 44,
+    "filename": "taint_in_taint_out.py",
+    "message": "Data from [Test] source(s) may reach [Test] sink(s)",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "leaves": [ { "name": "_test_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [ { "always-via": "tito" } ],
+            "tito": [ { "line": 204, "start": 29, "end": 43 } ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 204,
+              "start": 29,
+              "end": 43
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "leaves": [ { "name": "_test_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 204,
+              "start": 15,
+              "end": 44
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "special_source" },
+      { "always-via": "special_sink" },
+      { "always-via": "tito" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "_test_sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "taint_in_taint_out.test_simplified_evaluator:5002:0:Call|_test_sink|0|formal(arg):4ea1dfcb4011b7d278405c93836ee5d8"
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable":
+      "taint_in_taint_out.ComplexEvaluator.evaluate_lazy_payload._evaluate",
+    "tito": [
+      {
+        "port": "formal(field)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "" ], "length": 1, "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "via": "tito-broadening" },
+              { "always-via": "tito" },
+              { "via": "broadening" },
+              { "via": "obscure:unknown-callee" }
+            ],
+            "tito": [
+              { "line": 217, "start": 50, "end": 55 },
+              { "line": 218, "start": 44, "end": 49 }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable":
+      "taint_in_taint_out.approximate_return_access_paths_common_prefix_input",
+    "tito": [
+      {
+        "port": "formal(x)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [
+              { "always-via": "broadening" },
+              { "always-via": "widen-broadening" }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable":
+      "taint_in_taint_out.approximate_return_access_paths_common_prefix_output",
+    "tito": [
+      {
+        "port": "formal(x)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[a]" ], "kind": "LocalReturn" } ],
+            "local_features": [
+              { "always-via": "broadening" },
+              { "always-via": "widen-broadening" }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "Obj{taint_in_taint_out.FieldIsTITO.add_tito}",
+    "sinks": [
+      {
+        "port": "formal($global)",
+        "taint": [ { "kinds": [ { "kind": "Test" } ], "decl": null } ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal($global)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "string_concat_lhs" } ],
+                "return_paths": [ "" ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_test_sink",
+    "sinks": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_test_source",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.ComplexEvaluator.evaluate_lazy_field",
+    "tito": [
+      {
+        "port": "formal(field)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [ { "via": "obscure:unknown-callee" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.ComplexEvaluator.evaluate_lazy_payload",
+    "tito": [
+      {
+        "port": "formal(payload)[items]",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [
+              { "always-via": "tito-broadening" },
+              { "via": "tito" },
+              { "always-via": "broadening" },
+              { "always-via": "obscure:unknown-callee" }
+            ],
+            "tito": [ { "line": 220, "start": 31, "end": 36 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.Data.__init__",
+    "tito": [
+      {
+        "port": "formal(b)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[b]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(a)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[a]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.GetQuery.__init__",
+    "tito": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "[arg]" ], "kind": "LocalReturn" }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.GetUser.__init__",
+    "tito": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "return_paths": [ "[arg]" ],
+                "length": 1,
+                "kind": "LocalReturn"
+              }
+            ],
+            "local_features": [ { "always-via": "tito" } ],
+            "tito": [ { "line": 191, "start": 32, "end": 35 } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [ { "via": "tito" } ],
+            "tito": [ { "line": 191, "start": 26, "end": 30 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.Recursive.__init__",
+    "tito": [
+      {
+        "port": "formal(select)[*][*][0][target]",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "return_paths": [
+                  "[init_list]", "[related][init_list]",
+                  "[related][related][init_list]",
+                  "[related][related][related]"
+                ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "local_features": [
+              { "has": "first-index" },
+              { "first-index": "<numeric>" },
+              { "via": "tito" },
+              { "via": "broadening" },
+              { "via": "issue-broadening" }
+            ],
+            "tito": [ { "line": 67, "start": 35, "end": 41 } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.add_feature",
+    "tito": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "string_concat_rhs" } ],
+                "kind": "Attach"
+              },
+              { "return_paths": [ "" ], "kind": "LocalReturn" }
+            ],
+            "local_features": [ { "via": "string_concat_rhs" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.adds_tito",
+    "sources": [
+      {
+        "port": "formal(x)",
+        "taint": [ { "kinds": [ { "kind": "Test" } ], "decl": null } ]
+      },
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "taint_in_taint_out.adds_tito" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [
+              { "has": "first-field" },
+              { "first-field": "add_tito" },
+              { "always-type": "integer" },
+              { "always-via": "string_concat_lhs" },
+              { "always-type": "scalar" }
+            ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 78,
+              "start": 14,
+              "end": 28
+            }
+          }
+        ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(x)[add_tito]",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [ { "always-via": "string_concat_lhs" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.adds_tito_inherited",
+    "sources": [
+      {
+        "port": "formal(x)",
+        "taint": [ { "kinds": [ { "kind": "Test" } ], "decl": null } ]
+      },
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "leaves": [
+                  { "name": "taint_in_taint_out.adds_tito_inherited" }
+                ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [
+              { "has": "first-field" },
+              { "first-field": "add_tito" },
+              { "always-type": "integer" },
+              { "always-via": "string_concat_lhs" },
+              { "always-type": "scalar" }
+            ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 86,
+              "start": 24,
+              "end": 43
+            }
+          }
+        ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(x)[add_tito]",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [ { "always-via": "string_concat_lhs" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.adds_tito_with_indirect_sink",
+    "sinks": [
+      {
+        "port": "formal(src)[add_tito]",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "always-via": "special_sink" },
+                  { "always-via": "string_concat_lhs" }
+                ],
+                "leaves": [ { "name": "_test_sink" } ],
+                "length": 1,
+                "kind": "Test"
+              }
+            ],
+            "call": {
+              "position": {
+                "filename": "taint_in_taint_out.py",
+                "line": 91,
+                "start": 18,
+                "end": 21
+              },
+              "resolves_to": [ "taint_in_taint_out.indirect_sink" ],
+              "port": "formal(x)[add_tito]"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.approximate_return_access_paths",
+    "tito": [
+      {
+        "port": "formal(x)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [
+              { "always-via": "broadening" },
+              { "always-via": "widen-broadening" }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.evaluate_lazy",
+    "tito": [
+      {
+        "port": "formal(payload)[*]",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(payload).**keys",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ ".**keys" ], "kind": "LocalReturn" }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.get_data",
+    "tito": [
+      {
+        "port": "formal(x)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "[id]", "[name]" ], "kind": "LocalReturn" }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.get_related",
+    "tito": [
+      {
+        "port": "formal(select)[*][*][0][target]",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "return_paths": [
+                  "[init_list]", "[related][init_list]",
+                  "[related][related][init_list]",
+                  "[related][related][related]"
+                ],
+                "length": 1,
+                "kind": "LocalReturn"
+              }
+            ],
+            "local_features": [
+              { "always-via": "tito" },
+              { "via": "broadening" },
+              { "via": "issue-broadening" }
+            ],
+            "tito": [ { "line": 71, "start": 21, "end": 27 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.indirect_sink",
+    "sinks": [
+      {
+        "port": "formal(x)[add_tito]",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "leaves": [ { "name": "_test_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [ { "always-via": "string_concat_lhs" } ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 95,
+              "start": 15,
+              "end": 25
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.product_data",
+    "tito": [
+      {
+        "port": "formal(x)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "" ], "length": 1, "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "always-via": "tito" }
+            ],
+            "tito": [
+              { "line": 33, "start": 20, "end": 21 },
+              { "line": 36, "start": 30, "end": 38 },
+              { "line": 40, "start": 30, "end": 37 },
+              { "line": 41, "start": 33, "end": 40 },
+              { "line": 41, "start": 51, "end": 60 },
+              { "line": 41, "start": 72, "end": 82 },
+              { "line": 43, "start": 26, "end": 38 }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.product_data_wrapper",
+    "tito": [
+      {
+        "port": "formal(x)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "" ], "length": 2, "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 51, "start": 24, "end": 25 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.return_taint",
+    "tito": [
+      {
+        "port": "formal(b2)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[2]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(b1)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[1]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(tainted)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[0]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.return_taint_in_list",
+    "tito": [
+      {
+        "port": "formal(b)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[2]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(a)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[1]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(tainted)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "[0]" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.tito",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "leaves": [ { "name": "_test_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 55, "start": 32, "end": 46 } ],
+            "root": {
+              "filename": "taint_in_taint_out.py",
+              "line": 55,
+              "start": 32,
+              "end": 46
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.tito_with_feature",
+    "tito": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "string_concat_rhs" } ],
+                "kind": "Attach"
+              },
+              { "return_paths": [ "" ], "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "via": "string_concat_rhs" },
+              { "via": "tito" }
+            ],
+            "tito": [ { "line": 174, "start": 27, "end": 30 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "taint_in_taint_out.via_getattr",
+    "tito": [
+      {
+        "port": "formal(y)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(x)[foo]",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}

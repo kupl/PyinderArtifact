@@ -1,0 +1,62 @@
+ModelQuery(
+  name = "get_model_query_any_decorator_test1_sources",
+  find = "functions",
+  where = [
+    name.matches("test1_"),
+    Decorator(name.equals("model_query_any_decorator.test1_d1"))
+  ],
+  model = [
+    Returns(TaintSource[Test])
+  ]
+)
+
+ModelQuery(
+  name = "get_model_query_any_decorator_test2_sources",
+  find = "functions",
+  where = [
+    name.matches("test2_"),
+    Decorator(name.matches("d1"))
+  ],
+  model = [
+    Returns(TaintSource[Test])
+  ]
+)
+
+ModelQuery(
+  name = "get_model_query_any_decorator_test3_sources",
+  find = "functions",
+  where = [
+    name.matches("test3_"),
+    Decorator(name.equals("model_query_any_decorator.test3_d1"), arguments.contains(arg1, 2, arg3="Foo"))
+  ],
+  model = [
+    Returns(TaintSource[Test])
+  ]
+)
+
+ModelQuery(
+  name = "get_model_query_any_decorator_test4_sources",
+  find = "functions",
+  where = [
+    name.matches("test4_"),
+    Decorator(name.equals("model_query_any_decorator.test4_d1"), arguments.equals(arg1, 2, arg3="Foo"))
+  ],
+  model = [
+    Returns(TaintSource[Test])
+  ]
+)
+
+ModelQuery(
+  name = "get_model_query_any_decorator_test5_sources",
+  find = "functions",
+  where = [
+    name.matches("test5_"),
+    Decorator(
+      name.equals("model_query_any_decorator.test5_d1"),
+      arguments.contains(arg1, 2, arg3="Foo")
+    )
+  ],
+  model = [
+    Returns(TaintSource[Test])
+  ]
+)

@@ -1,0 +1,610 @@
+@generated
+{
+  "kind": "model",
+  "data": {
+    "callable": "Obj{ClassWithSinkAttribute.attribute}",
+    "sinks": [
+      {
+        "port": "formal($global)",
+        "taint": [ { "kinds": [ { "kind": "Test" } ], "decl": null } ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "Obj{taint._global_sink}",
+    "sinks": [
+      {
+        "port": "formal($global)",
+        "taint": [ { "kinds": [ { "kind": "Test" } ], "decl": null } ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_cookies",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [ { "kinds": [ { "kind": "Cookies" } ], "decl": null } ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_rce",
+    "sinks": [
+      {
+        "port": "formal(argument)",
+        "taint": [
+          { "kinds": [ { "kind": "RemoteCodeExecution" } ], "decl": null }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_sql",
+    "sinks": [
+      {
+        "port": "formal(argument)",
+        "taint": [ { "kinds": [ { "kind": "SQL" } ], "decl": null } ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_test_sink",
+    "sinks": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_test_source",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_tito",
+    "tito": [
+      {
+        "port": "formal(**kw)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(*rest0)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_user_controlled",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          { "kinds": [ { "kind": "UserControlled" } ], "decl": null }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "copy",
+    "tito": [
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "copy" } ],
+                "return_paths": [ "" ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "eval",
+    "sinks": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          { "kinds": [ { "kind": "RemoteCodeExecution" } ], "decl": null }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "getattr",
+    "sinks": [
+      {
+        "port": "formal(name)",
+        "taint": [ { "kinds": [ { "kind": "GetAttr" } ], "decl": null } ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(default)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "default" } ],
+                "return_paths": [ "" ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(o)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "object" } ],
+                "return_paths": [ "" ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "model_simplification._asdict_inner",
+    "sinks": [
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              { "leaves": [ { "name": "getattr" } ], "kind": "GetAttr" }
+            ],
+            "local_features": [
+              { "always-via": "obscure:model" },
+              { "always-via": "tito-broadening" },
+              { "always-via": "tito" },
+              { "always-via": "broadening" }
+            ],
+            "tito": [ { "line": 41, "start": 24, "end": 27 } ],
+            "root": {
+              "filename": "model_simplification.py",
+              "line": 42,
+              "start": 47,
+              "end": 53
+            }
+          },
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "via": "object" },
+                  { "always-via": "obscure:model" },
+                  { "always-via": "tito-broadening" },
+                  { "always-via": "tito" },
+                  { "always-via": "broadening" },
+                  { "via": "obscure:unknown-callee" }
+                ],
+                "leaves": [ { "name": "getattr" } ],
+                "length": 1,
+                "kind": "GetAttr"
+              }
+            ],
+            "local_features": [
+              { "always-via": "object" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 42, "start": 42, "end": 45 } ],
+            "call": {
+              "position": {
+                "filename": "model_simplification.py",
+                "line": 42,
+                "start": 34,
+                "end": 54
+              },
+              "resolves_to": [ "model_simplification._asdict_inner" ],
+              "port": "formal(obj)"
+            }
+          },
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "via": "object" },
+                  { "always-via": "obscure:model" },
+                  { "always-via": "tito-broadening" },
+                  { "always-via": "tito" },
+                  { "always-via": "broadening" },
+                  { "via": "obscure:unknown-callee" }
+                ],
+                "leaves": [ { "name": "getattr" } ],
+                "length": 1,
+                "kind": "GetAttr"
+              }
+            ],
+            "call": {
+              "position": {
+                "filename": "model_simplification.py",
+                "line": 49,
+                "start": 56,
+                "end": 57
+              },
+              "resolves_to": [ "model_simplification._asdict_inner" ],
+              "port": "formal(obj)"
+            }
+          },
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "via": "object" },
+                  { "always-via": "obscure:model" },
+                  { "always-via": "tito-broadening" },
+                  { "always-via": "tito" },
+                  { "always-via": "broadening" },
+                  { "via": "obscure:unknown-callee" }
+                ],
+                "leaves": [ { "name": "getattr" } ],
+                "length": 1,
+                "kind": "GetAttr"
+              }
+            ],
+            "local_features": [
+              { "always-via": "tito-broadening" },
+              { "always-via": "broadening" },
+              { "always-via": "obscure:unknown-callee" }
+            ],
+            "call": {
+              "position": {
+                "filename": "model_simplification.py",
+                "line": 54,
+                "start": 34,
+                "end": 35
+              },
+              "resolves_to": [ "model_simplification._asdict_inner" ],
+              "port": "formal(obj)"
+            }
+          },
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "via": "object" },
+                  { "always-via": "obscure:model" },
+                  { "always-via": "tito-broadening" },
+                  { "always-via": "tito" },
+                  { "always-via": "broadening" },
+                  { "via": "obscure:unknown-callee" }
+                ],
+                "leaves": [ { "name": "getattr" } ],
+                "length": 1,
+                "kind": "GetAttr"
+              }
+            ],
+            "call": {
+              "position": {
+                "filename": "model_simplification.py",
+                "line": 64,
+                "start": 34,
+                "end": 35
+              },
+              "resolves_to": [ "model_simplification._asdict_inner" ],
+              "port": "formal(obj)"
+            }
+          }
+        ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(dict_factory)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "via": "tito" },
+              { "always-via": "obscure:unknown-callee" }
+            ],
+            "tito": [
+              { "line": 49, "start": 25, "end": 87 },
+              { "line": 49, "start": 41, "end": 86 },
+              { "line": 49, "start": 59, "end": 71 }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "via": "tito" }
+            ],
+            "tito": [
+              { "line": 49, "start": 25, "end": 87 },
+              { "line": 49, "start": 41, "end": 86 },
+              { "line": 49, "start": 56, "end": 57 }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "model_simplification.asdict",
+    "sinks": [
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "via": "object" },
+                  { "always-via": "obscure:model" },
+                  { "always-via": "tito-broadening" },
+                  { "always-via": "tito" },
+                  { "always-via": "broadening" },
+                  { "via": "obscure:unknown-callee" }
+                ],
+                "leaves": [ { "name": "getattr" } ],
+                "length": 1,
+                "kind": "GetAttr"
+              }
+            ],
+            "call": {
+              "position": {
+                "filename": "model_simplification.py",
+                "line": 34,
+                "start": 25,
+                "end": 28
+              },
+              "resolves_to": [ "model_simplification._asdict_inner" ],
+              "port": "formal(obj)"
+            }
+          }
+        ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(dict_factory)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "" ], "length": 1, "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "always-via": "tito" },
+              { "always-via": "obscure:unknown-callee" }
+            ],
+            "tito": [ { "line": 34, "start": 30, "end": 42 } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "" ], "length": 1, "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 34, "start": 25, "end": 28 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "model_simplification.asdict_test",
+    "sinks": [
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [
+                  { "via": "object" },
+                  { "always-via": "obscure:model" },
+                  { "always-via": "tito-broadening" },
+                  { "always-via": "tito" },
+                  { "always-via": "broadening" },
+                  { "via": "obscure:unknown-callee" }
+                ],
+                "leaves": [ { "name": "getattr" } ],
+                "length": 2,
+                "kind": "GetAttr"
+              }
+            ],
+            "call": {
+              "position": {
+                "filename": "model_simplification.py",
+                "line": 75,
+                "start": 18,
+                "end": 21
+              },
+              "resolves_to": [ "model_simplification.asdict" ],
+              "port": "formal(obj)"
+            }
+          }
+        ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "" ], "length": 2, "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "via": "obscure:model" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 75, "start": 18, "end": 21 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "model_simplification.obscure_test",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "leaves": [ { "name": "_test_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "local_features": [ { "always-via": "obscure:unknown-callee" } ],
+            "tito": [ { "line": 79, "start": 21, "end": 35 } ],
+            "root": {
+              "filename": "model_simplification.py",
+              "line": 79,
+              "start": 21,
+              "end": 35
+            }
+          }
+        ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "" ], "length": 1, "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "always-via": "obscure:model" },
+              { "always-via": "tito" },
+              { "always-via": "obscure:unknown-callee" }
+            ],
+            "tito": [
+              { "line": 79, "start": 11, "end": 20 },
+              { "line": 79, "start": 16, "end": 19 }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,391 @@
+@generated
+{
+  "kind": "model",
+  "data": {
+    "callable": "Obj{ClassWithSinkAttribute.attribute}",
+    "sinks": [
+      {
+        "port": "formal($global)",
+        "taint": [ { "kinds": [ { "kind": "Test" } ], "decl": null } ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "Obj{taint._global_sink}",
+    "sinks": [
+      {
+        "port": "formal($global)",
+        "taint": [ { "kinds": [ { "kind": "Test" } ], "decl": null } ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_cookies",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [ { "kinds": [ { "kind": "Cookies" } ], "decl": null } ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_rce",
+    "sinks": [
+      {
+        "port": "formal(argument)",
+        "taint": [
+          { "kinds": [ { "kind": "RemoteCodeExecution" } ], "decl": null }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_sql",
+    "sinks": [
+      {
+        "port": "formal(argument)",
+        "taint": [ { "kinds": [ { "kind": "SQL" } ], "decl": null } ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_test_sink",
+    "sinks": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_sink" } ],
+                "kind": "Test"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_test_source",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "special_source" } ],
+                "kind": "Test"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_tito",
+    "tito": [
+      {
+        "port": "formal(**kw)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(*rest0)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "_user_controlled",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          { "kinds": [ { "kind": "UserControlled" } ], "decl": null }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "copy",
+    "tito": [
+      {
+        "port": "formal(obj)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "copy" } ],
+                "return_paths": [ "" ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "eval",
+    "sinks": [
+      {
+        "port": "formal(arg)",
+        "taint": [
+          { "kinds": [ { "kind": "RemoteCodeExecution" } ], "decl": null }
+        ]
+      }
+    ],
+    "modes": [ "Obscure" ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "getattr",
+    "sinks": [
+      {
+        "port": "formal(name)",
+        "taint": [ { "kinds": [ { "kind": "GetAttr" } ], "decl": null } ]
+      }
+    ],
+    "tito": [
+      {
+        "port": "formal(default)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "default" } ],
+                "return_paths": [ "" ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(o)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "features": [ { "always-via": "object" } ],
+                "return_paths": [ "" ],
+                "kind": "LocalReturn"
+              }
+            ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "long_access_path_taint.C.__init__",
+    "tito": [
+      {
+        "port": "formal(request)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "[request]" ], "kind": "LocalReturn" }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(kind)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "[kind]" ], "kind": "LocalReturn" }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(params)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "return_paths": [ "[app_id]", "[timestamp]" ],
+                "length": 1,
+                "kind": "LocalReturn"
+              }
+            ],
+            "local_features": [
+              { "has": "first-index" },
+              { "first-index": "app_id" },
+              { "first-index": "timestamp" },
+              { "always-via": "obscure:model" },
+              { "always-via": "tito" }
+            ],
+            "tito": [
+              { "line": 15, "start": 25, "end": 31 },
+              { "line": 16, "start": 22, "end": 28 }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(id)",
+        "taint": [
+          {
+            "kinds": [
+              { "return_paths": [ "[id]" ], "kind": "LocalReturn" }
+            ],
+            "local_features": [
+              { "always-type": "integer" },
+              { "always-type": "scalar" }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "long_access_path_taint.C.async_create",
+    "tito": [
+      {
+        "port": "formal(request)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "return_paths": [ "[request]" ],
+                "length": 1,
+                "kind": "LocalReturn"
+              }
+            ],
+            "local_features": [ { "always-via": "tito" } ],
+            "tito": [ { "line": 31, "start": 37, "end": 44 } ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(params)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "return_paths": [
+                  "[app_id]", "[kind]", "[request]", "[timestamp]"
+                ],
+                "length": 1,
+                "kind": "LocalReturn"
+              }
+            ],
+            "local_features": [
+              { "always-via": "obscure:model" },
+              { "always-via": "tito" }
+            ],
+            "tito": [
+              { "line": 24, "start": 19, "end": 25 },
+              { "line": 29, "start": 30, "end": 36 },
+              { "line": 31, "start": 23, "end": 29 },
+              { "line": 31, "start": 31, "end": 35 },
+              { "line": 31, "start": 37, "end": 44 }
+            ],
+            "decl": null
+          }
+        ]
+      },
+      {
+        "port": "formal(id)",
+        "taint": [
+          {
+            "kinds": [
+              {
+                "return_paths": [ "[id]" ],
+                "length": 1,
+                "kind": "LocalReturn"
+              }
+            ],
+            "local_features": [
+              { "always-type": "integer" },
+              { "always-type": "scalar" },
+              { "always-via": "tito" }
+            ],
+            "tito": [ { "line": 31, "start": 19, "end": 21 } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}

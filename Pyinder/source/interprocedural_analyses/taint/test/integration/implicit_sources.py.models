@@ -1,0 +1,133 @@
+@generated
+{
+  "kind": "model",
+  "data": {
+    "callable": "implicit_sources.bar_dot_format",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [ { "kind": "IPAddress" } ],
+            "root": {
+              "filename": "implicit_sources.py",
+              "line": 25,
+              "start": 11,
+              "end": 55
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "implicit_sources.bar_format_strings",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [ { "kind": "IPAddress" } ],
+            "root": {
+              "filename": "implicit_sources.py",
+              "line": 15,
+              "start": 11,
+              "end": 47
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "implicit_sources.bar_percent_format",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [ { "kind": "IPAddress" } ],
+            "root": {
+              "filename": "implicit_sources.py",
+              "line": 20,
+              "start": 11,
+              "end": 52
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "implicit_sources.foo",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [ { "kind": "IPAddress" } ],
+            "root": {
+              "filename": "implicit_sources.py",
+              "line": 10,
+              "start": 11,
+              "end": 28
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "implicit_sources.multiple_patterns",
+    "sources": [
+      {
+        "port": "result",
+        "taint": [
+          {
+            "kinds": [ { "kind": "HTMLPattern" }, { "kind": "IPAddress" } ],
+            "root": {
+              "filename": "implicit_sources.py",
+              "line": 33,
+              "start": 11,
+              "end": 30
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "implicit_sources.string_source_not_top_level",
+    "sources": [
+      {
+        "port": "result[key]",
+        "taint": [
+          {
+            "kinds": [ { "kind": "GoogleAPIKey" } ],
+            "root": {
+              "filename": "implicit_sources.py",
+              "line": 46,
+              "start": 21,
+              "end": 62
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

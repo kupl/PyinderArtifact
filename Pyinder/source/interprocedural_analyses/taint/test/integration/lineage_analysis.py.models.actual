@@ -1,0 +1,520 @@
+@generated
+{
+  "kind": "issue",
+  "data": {
+    "callable": "lineage_analysis.issue1",
+    "callable_line": 64,
+    "code": 1000,
+    "line": 67,
+    "start": 9,
+    "end": 11,
+    "filename": "lineage_analysis.py",
+    "message": "source A to sink A",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindA]"
+              },
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindB]"
+              }
+            ],
+            "local_features": [
+              { "always-via": "tito-broadening" },
+              { "always-via": "tito" },
+              { "always-via": "broadening" }
+            ],
+            "tito": [ { "line": 66, "start": 4, "end": 6 } ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 65,
+              "start": 9,
+              "end": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.sink" } ],
+                "kind": "SinkA[KindB]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 67,
+              "start": 9,
+              "end": 11
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "tito-broadening" },
+      { "always-via": "tito" },
+      { "always-via": "broadening" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "lineage_analysis.sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "lineage_analysis.issue1:1000:0:Call|lineage_analysis.sink|0|formal(arg):8e0f473e34fa06bcc853755cbcae73a7"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "lineage_analysis.issue1",
+    "callable_line": 64,
+    "code": 1000,
+    "line": 67,
+    "start": 9,
+    "end": 11,
+    "filename": "lineage_analysis.py",
+    "message": "source A to sink A",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindA]"
+              },
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindB]"
+              }
+            ],
+            "local_features": [
+              { "always-via": "tito-broadening" },
+              { "always-via": "tito" },
+              { "always-via": "broadening" }
+            ],
+            "tito": [ { "line": 66, "start": 4, "end": 6 } ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 65,
+              "start": 9,
+              "end": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.sink" } ],
+                "kind": "SinkA[KindA]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 67,
+              "start": 9,
+              "end": 11
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "tito-broadening" },
+      { "always-via": "tito" },
+      { "always-via": "broadening" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "lineage_analysis.sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "lineage_analysis.issue1:1000:0:Call|lineage_analysis.sink|0|formal(arg):8e0f473e34fa06bcc853755cbcae73a7"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "lineage_analysis.issue2",
+    "callable_line": 70,
+    "code": 1000,
+    "line": 73,
+    "start": 9,
+    "end": 12,
+    "filename": "lineage_analysis.py",
+    "message": "source A to sink A",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindB]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 71,
+              "start": 9,
+              "end": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.sink" } ],
+                "kind": "SinkA[KindB]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 73,
+              "start": 9,
+              "end": 12
+            }
+          }
+        ]
+      }
+    ],
+    "features": [],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "lineage_analysis.sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "lineage_analysis.issue2:1000:0:Call|lineage_analysis.sink|0|formal(arg):213a3804b482da74133941dfc65215e1"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "lineage_analysis.issue2",
+    "callable_line": 70,
+    "code": 1000,
+    "line": 73,
+    "start": 9,
+    "end": 12,
+    "filename": "lineage_analysis.py",
+    "message": "source A to sink A",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindA]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 71,
+              "start": 9,
+              "end": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.sink" } ],
+                "kind": "SinkA[KindA]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 73,
+              "start": 9,
+              "end": 12
+            }
+          }
+        ]
+      }
+    ],
+    "features": [],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "lineage_analysis.sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "lineage_analysis.issue2:1000:0:Call|lineage_analysis.sink|0|formal(arg):213a3804b482da74133941dfc65215e1"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "lineage_analysis.issue5",
+    "callable_line": 90,
+    "code": 1000,
+    "line": 94,
+    "start": 9,
+    "end": 11,
+    "filename": "lineage_analysis.py",
+    "message": "source A to sink A",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindA]"
+              },
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindB]"
+              }
+            ],
+            "local_features": [
+              { "always-via": "tito-broadening" },
+              { "always-via": "tito" },
+              { "always-via": "broadening" }
+            ],
+            "tito": [ { "line": 93, "start": 4, "end": 6 } ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 91,
+              "start": 9,
+              "end": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.sink" } ],
+                "kind": "SinkA[KindB]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 94,
+              "start": 9,
+              "end": 11
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "tito-broadening" },
+      { "always-via": "tito" },
+      { "always-via": "broadening" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "lineage_analysis.sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "lineage_analysis.issue5:1000:0:Call|lineage_analysis.sink|0|formal(arg):7e5694b82f8e7a51e82957b158e4d072"
+  }
+}
+{
+  "kind": "issue",
+  "data": {
+    "callable": "lineage_analysis.issue5",
+    "callable_line": 90,
+    "code": 1000,
+    "line": 94,
+    "start": 9,
+    "end": 11,
+    "filename": "lineage_analysis.py",
+    "message": "source A to sink A",
+    "traces": [
+      {
+        "name": "forward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindA]"
+              },
+              {
+                "leaves": [ { "name": "lineage_analysis.source" } ],
+                "kind": "SourceA[KindB]"
+              }
+            ],
+            "local_features": [
+              { "always-via": "tito-broadening" },
+              { "always-via": "tito" },
+              { "always-via": "broadening" }
+            ],
+            "tito": [ { "line": 93, "start": 4, "end": 6 } ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 91,
+              "start": 9,
+              "end": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "backward",
+        "roots": [
+          {
+            "kinds": [
+              {
+                "leaves": [ { "name": "lineage_analysis.sink" } ],
+                "kind": "SinkA[KindA]"
+              }
+            ],
+            "root": {
+              "filename": "lineage_analysis.py",
+              "line": 94,
+              "start": 9,
+              "end": 11
+            }
+          }
+        ]
+      }
+    ],
+    "features": [
+      { "always-via": "tito-broadening" },
+      { "always-via": "tito" },
+      { "always-via": "broadening" }
+    ],
+    "sink_handle": {
+      "kind": "Call",
+      "callee": "lineage_analysis.sink",
+      "index": 0,
+      "parameter": "formal(arg)"
+    },
+    "master_handle":
+      "lineage_analysis.issue5:1000:0:Call|lineage_analysis.sink|0|formal(arg):7e5694b82f8e7a51e82957b158e4d072"
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "lineage_analysis.DataFrame.__init__",
+    "tito": [
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "lineage_analysis.DataFrame.__setitem__",
+    "tito": [
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "lineage_analysis.Series.__init__",
+    "tito": [
+      {
+        "port": "formal(self)",
+        "taint": [
+          {
+            "kinds": [ { "return_paths": [ "" ], "kind": "LocalReturn" } ],
+            "decl": null
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "lineage_analysis.sink",
+    "sinks": [
+      {
+        "port": "formal(arg)[a]",
+        "taint": [
+          { "kinds": [ { "kind": "SinkA[KindA]" } ], "decl": null }
+        ]
+      },
+      {
+        "port": "formal(arg)[b]",
+        "taint": [
+          { "kinds": [ { "kind": "SinkA[KindB]" } ], "decl": null }
+        ]
+      }
+    ]
+  }
+}
+{
+  "kind": "model",
+  "data": {
+    "callable": "lineage_analysis.source",
+    "sources": [
+      {
+        "port": "result[a]",
+        "taint": [
+          { "kinds": [ { "kind": "SourceA[KindA]" } ], "decl": null }
+        ]
+      },
+      {
+        "port": "result[b]",
+        "taint": [
+          { "kinds": [ { "kind": "SourceA[KindB]" } ], "decl": null }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+(library
+ (foreign_stubs
+  (language c)
+  (names files get_build_id handle_stubs nproc priorities realpath sysinfo))
+ (name utils)
+ (public_name hack_parallel.utils)
+ (wrapped false)
+ (modules (:standard))
+ (libraries core str hack_parallel.collections
+   hack_parallel.hack_core))
