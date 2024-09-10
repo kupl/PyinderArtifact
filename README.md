@@ -41,7 +41,7 @@ docker build -t pyinder:1.0 .
 ```
 
 In this step, [Mypy](https://github.com/python/mypy), [Pytype](https://github.com/google/pytype), and [Pyright](https://github.com/microsoft/pyright) are installed, but [Pyre](https://github.com/facebook/pyre-check) is not installed due to the compatibility issue, such as linking, with Pyinder. 
-You can install and run Pyre by following the instructions in the [Install Pyre](#install-pyre).
+You can install and run Pyre by following the instructions in the [Install Pyre](./EVALUATION.md#install-pyre).
 
 ### Run Docker Container
 
@@ -84,7 +84,7 @@ At first, clone the project and prepare the project for the analysis:
 cd ~
 cd configuration
 python download_repo.py --project luigi
-python setting_config.py
+python setting_config.py --project luigi
 ```
 
 Next, run the tools with the luigi project:
@@ -165,9 +165,9 @@ Finally, you can see the results by following these steps:
 ```bash
 cd ~
 cd eval
-python check_alarm.py # show the number of alarms by each tool
-python check_correct.py # show the number of detecting type errors by each tool
-python check_time.py # show the time taken by each tool
+python check_alarm.py -p luigi # show the number of alarms by each tool
+python check_correct.py -p luigi # show the number of detecting type errors by each tool
+python check_time.py -p luigi # show the time taken by each tool
 ```
 
 ---
@@ -176,48 +176,34 @@ python check_time.py # show the time taken by each tool
 
 > Note: The results can be slightly different from the paper because the tools and [typeshed](https://github.com/python/typeshed) can be updated.
 
-The command `python check_alarm.py` shows the number of alarms by each tool:
+The command `python check_alarm.py -p luigi` shows the number of alarms by each tool:
 
 ```bash
 Project             Pyinder   Mypy      Pyre      Pytype    Pyright
-airflow-3831        N/A       N/A       N/A       N/A       N/A  
 luigi-1836          82        85        N/A       0         144
-...
 luigi-4             104       117       N/A       0         179
 luigi-14            79        75        N/A       0         138
-...
-sympy-44            N/A       N/A       N/A       N/A       N/A
 Total               265       277       0         0         461
 Per 1k LOC          6.73      7.04      N/A       0.0       11.71
 ```
 
-The command `python check_correct.py` shows the number of detecting type errors by each tool:
+The command `python check_correct.py -p luigi` shows the number of detecting type errors by each tool:
 
 ```bash
 Project             Pyinder   Mypy      Pyre      Pytype    Pyright
-airflow-3831        E         E         E         E         E
-...
 luigi-1836          O         O         E         X         O
-...
 luigi-4             X         X         E         X         X
 luigi-14            O         X         E         X         O
-...
-sympy-44            E         E         E         E         E
 Correct             2         1         0         0         2
 ```
 
-The command `python check_time.py` shows the time taken by each tool:
+The command `python check_time.py -p luigi` shows the time taken by each tool:
 
 ```bash
 Project             Pyinder   Mypy      Pyre      Pytype    Pyright
-airflow-3831        N/A       N/A       N/A       N/A       N/A  
-...
 luigi-1836          77.26     6.64      N/A       27.55     8.8
-...
 luigi-4             85.77     4.69      N/A       149.27    10.04
 luigi-14            74.57     4.21      N/A       546.52    8.55
-...
-sympy-44            N/A       N/A       N/A       N/A       N/A
 Total               237.6     15.54     0         723.34    27.39
 Per 1k LOC          6.04      0.39      N/A       18.38     0.7
 ```

@@ -53,15 +53,15 @@ def run():
     target = args.project
 
     for project, info in typebugs_repo.items():
-        if target and target in project:
+        if target and target not in project:
             continue
         clone_and_checkout(project, info, benchmark="typebugs")
     for project, info in bugsinpy_repo.items():
-        if target and target in project:
+        if target and target not in project:
             continue
         clone_and_checkout(project, info, benchmark="bugsinpy")
     for project, info in excepy_repo.items():
-        if target and target in project:
+        if target and target not in project:
             continue
         clone_and_checkout(project, info, benchmark="excepy")
 

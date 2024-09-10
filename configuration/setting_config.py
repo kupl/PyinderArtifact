@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import os
+import argparse
 
 HOME_PATH = Path.home()
 
@@ -161,10 +162,18 @@ def pyre_config_change(path, file_content, prj):
     return file_content
 
 def run():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--project", type=str, default=None)
+    args = ap.parse_args()
+    target = args.project
+
     config_path = HOME_PATH / "configuration" / "config"
 
     typebugs_list = typebugs.split()
     for prj in typebugs_list:
+        if target and target not in prj:
+            continue
+
         path = HOME_PATH / "typebugs" / prj
 
         mypy_config = config_path / "typebugs" / prj / "mypy.ini"
@@ -205,6 +214,9 @@ def run():
 
     bugsinpy_list = bugsinpy.split()
     for prj in bugsinpy_list:
+        if target and target not in prj:
+            continue
+
         path = HOME_PATH / "bugsinpy" / prj
 
         mypy_config = config_path / "bugsinpy" / prj / "mypy.ini"
@@ -244,6 +256,9 @@ def run():
     
     excepy_list = excepy.split()
     for prj in excepy_list:
+        if target and target not in prj:
+            continue
+        
         path = HOME_PATH / "excepy" / prj
 
         mypy_config = config_path / "excepy" / prj / "mypy.ini"

@@ -34,8 +34,8 @@ elif GIT_VERSION="$(git rev-parse HEAD)"; then
   VERSION="${GIT_VERSION}"
   echo "Git commit: ${VERSION}"
 else
-  echo 'Cannot determine version information'
-  exit 1
+  echo 'Cannot determine version information. Set the version as 1.0'
+  VERSION="1.0"
 fi
 
 # Add version information to the file.
