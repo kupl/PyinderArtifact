@@ -888,8 +888,11 @@ def run(project, num, detail) :
         #pyright_annotated_path_json = pyright_annotated_path / target_project / 'result.json'
 
         try :
-            with open(pyinder_json, 'r') as f :
-                pyinder_result = pyre_analysis(json.load(f))
+            try:
+                with open(pyinder_json, 'r') as f :
+                    pyinder_result = pyre_analysis(json.load(f))
+            except:
+                pyinder_result = {}
 
             try :
                 with open(pyre_json, 'r') as f :
